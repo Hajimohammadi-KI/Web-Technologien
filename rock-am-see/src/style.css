@@ -1,0 +1,80 @@
+/* style.css - Schönes, modernes Design mit deutschen Kommentaren */
+
+/* Grundstil für den Body */
+body {
+  background: #f0f2f5; /* Heller Hintergrund */
+  font-family: Arial, sans-serif; /* Klare Schriftart */
+}
+
+/* Header-Stil mit Farbverlauf und Schatten */
+header {
+  padding: 40px 20px; /* Innenabstand */
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); /* Farbverlauf */
+  border-bottom: 2px solid #dee2e6; /* Untere Linie */
+  text-align: center; /* Inhalt zentrieren */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Sanfter Schatten */
+}
+
+/* Logo im Header zentrieren */
+header img {
+  display: block; /* Blockelement */
+  margin: 0 auto 15px; /* Zentriert, mit Abstand nach unten */
+}
+
+/* Haupttitel größer und kräftiger */
+header h1 {
+  font-size: 2rem; /* Schriftgröße */
+  margin-bottom: 0.5rem; /* Abstand nach unten */
+  color: #333; /* Dunkle Farbe */
+}
+
+/* Untertitel heller und kleiner */
+header h2 {
+  font-size: 1.2rem;
+  color: #666; /* Grauer Ton */
+}
+
+/* Hauptbereich zentriert */
+main {
+  max-width: 500px; /* Max. Breite */
+  margin: 50px auto; /* Zentriert mit Abstand nach oben */
+  padding: 0 15px; /* Etwas seitlicher Innenabstand */
+}
+
+/* Formular-Container mit Schatten und Radius */
+form {
+  background: #ffffff; /* Weißer Hintergrund */
+  border-radius: 12px; /* Abgerundete Ecken */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* Schatten */
+  padding: 30px; /* Innenabstand */
+}
+
+/* Titel im Formular */
+form h5 {
+  font-weight: bold; /* Fett */
+  margin-bottom: 20px; /* Abstand nach unten */
+  text-align: center; /* Zentriert */
+  color: #333; /* Dunkler Farbton */
+}
+
+/* Primärbutton mit Verlauf und Hover-Effekt */
+.btn-primary {
+  background: linear-gradient(90deg, #007bff 0%, #0056b3 100%); /* Verlauf Blau */
+  border: none; /* Keine Linie */
+  transition: background 0.3s ease; /* Übergang */
+}
+
+/* Hover-Zustand für Button */
+.btn-primary:hover {
+  background: linear-gradient(90deg, #0056b3 0%, #003f7f 100%); /* Dunklerer Verlauf */
+}
+
+/* Eingabefelder leicht abgerundet */
+input.form-control, textarea.form-control {
+  border-radius: 6px; /* Runde Ecken */
+}
+
+/* Entferne Standardrahmen bei Card */
+.card {
+  border: none;
+}
