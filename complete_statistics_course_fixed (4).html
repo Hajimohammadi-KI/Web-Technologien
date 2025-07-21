@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دوره کامل آمار و احتمال - Complete Statistics Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 200;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 25px;
+            padding: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .language-toggle button {
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 0 3px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .language-toggle button.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .language-toggle button:hover {
+            background: #667eea;
+            transform: scale(1.05);
+        }
+
+        /* Language Content */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 300px;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 2rem 1rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .sidebar h2 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .menu-item {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-left-color: #4ecdc4;
+            transform: translateX(-5px);
+        }
+
+        .menu-item.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: #fff;
+            border-left-color: #ff6b6b;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-right: 300px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            min-height: 100vh;
+            border-radius: 20px 0 0 20px;
+            margin-top: 0;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            display: none;
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-right: 5px solid #667eea;
+            animation: slideInRight 0.5s ease-out;
+            min-height: 200px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        .section h3 {
+            color: #000000;
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .code-block {
+            background: #ffffff;
+            color: #000000;
+            font-size: 16px;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            border: 2px solid #000000;
+            position: relative;
+        }
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.6;
+        }
+
+        .code-block .comment {
+            color: #dc2626 !important;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            opacity: 1;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-right: 4px solid #2196F3;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-right: 4px solid #9c27b0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .exercise-box {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-right: 4px solid #ff9800;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .solution-box {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-right: 4px solid #4caf50;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .translation-note {
+            background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-right: 3px solid #e91e63;
+            font-style: italic;
+        }
+
+        .step-box {
+            background: #fff;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .distribution-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .distribution-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .distribution-table td {
+            padding: 0.8rem;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .distribution-table tr:hover {
+            background: #f8f9ff;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-right: 0;
+            }
+        }
+
+        .toggle-btn {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 200;
+        }
+
+        @media (max-width: 768px) {
+            .toggle-btn {
+                display: block;
+            }
+        }
+
+        /* German Language Styles (LTR) */
+        .lang-de {
+            direction: ltr;
+        }
+
+        .lang-de .main-content {
+            margin-left: 300px;
+            margin-right: 0;
+        }
+
+        .lang-de .sidebar {
+            left: 0;
+            right: auto;
+        }
+
+        .lang-de .section {
+            border-left: 5px solid #667eea;
+            border-right: none;
+        }
+
+        .lang-de .formula-box {
+            border-left: 4px solid #2196F3;
+            border-right: none;
+        }
+
+        .lang-de .definition-box {
+            border-left: 4px solid #9c27b0;
+            border-right: none;
+        }
+
+        .lang-de .exercise-box {
+            border-left: 4px solid #ff9800;
+            border-right: none;
+        }
+
+        .lang-de .solution-box {
+            border-left: 4px solid #4caf50;
+            border-right: none;
+        }
+
+        .lang-de .translation-note {
+            border-left: 3px solid #e91e63;
+            border-right: none;
+        }
+
+        .lang-de .copy-btn {
+            right: 10px;
+            left: auto;
+        }
+
+        .lang-de .menu-item {
+            border-right: 3px solid transparent;
+            border-left: none;
+        }
+
+        .lang-de .menu-item:hover {
+            border-right-color: #4ecdc4;
+            border-left-color: transparent;
+            transform: translateX(5px);
+        }
+
+        .lang-de .menu-item.active {
+            border-right-color: #ff6b6b;
+            border-left-color: transparent;
+        }
+
+        .lang-de .step-number {
+            left: 20px;
+            right: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button onclick="switchLanguage('fa')" id="fa-btn" class="active">فارسی</button>
+        <button onclick="switchLanguage('de')" id="de-btn">Deutsch</button>
+    </div>
+
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    
+    <div class="container">
+        <!-- Persian Content -->
+        <div class="lang-content lang-fa active" id="persian-content">
+            <nav class="sidebar" id="sidebar-fa">
+                <h2>دوره آمار و احتمال</h2>
+                <a href="#intro-fa" class="menu-item active" onclick="showSection('intro-fa')">مقدمه</a>
+                <a href="#continuous-fa" class="menu-item" onclick="showSection('continuous-fa')">توزیع‌های پیوسته</a>
+                <a href="#uniform-fa" class="menu-item" onclick="showSection('uniform-fa')">توزیع یکنواخت</a>
+                <a href="#pareto-fa" class="menu-item" onclick="showSection('pareto-fa')">توزیع پارتو</a>
+                <a href="#exponential-fa" class="menu-item" onclick="showSection('exponential-fa')">توزیع نمایی</a>
+                <a href="#normal-fa" class="menu-item" onclick="showSection('normal-fa')">توزیع نرمال</a>
+                <a href="#geometric-fa" class="menu-item" onclick="showSection('geometric-fa')">توزیع هندسی</a>
+                <a href="#binomial-fa" class="menu-item" onclick="showSection('binomial-fa')">توزیع دوجمله‌ای</a>
+                <a href="#central-limit-fa" class="menu-item" onclick="showSection('central-limit-fa')">قضیه حد مرکزی</a>
+                <a href="#tutorium-fa" class="menu-item" onclick="showSection('tutorium-fa')">تمرین‌های توتوریوم</a>
+                <a href="#exercises-fa" class="menu-item" onclick="showSection('exercises-fa')">تمرین‌های کاربردی</a>
+                <a href="#files-overview-fa" class="menu-item" onclick="showSection('files-overview-fa')">نمای کلی فایل‌ها</a>
+            </nav>
+
+            <main class="main-content">
+                <div class="header">
+                    <h1>دوره کامل آمار و احتمال</h1>
+                    <p>یادگیری توزیع‌های احتمال، کاربردها و حل مسائل</p>
+                </div>
+
+                <section id="intro-fa" class="section active">
+                    <h2>مقدمه</h2>
+                    
+                    <div class="translation-note">
+                        <strong>واژگان کلیدی:</strong> Statistics = آمار، Probability = احتمال، Distribution = توزیع، Variance = واریانس، Mean = میانگین
+                    </div>
+                    
+                    <div class="definition-box">
+                        <h3>اهداف دوره:</h3>
+                        <p>
+                            در این دوره، مفاهیم کلیدی آمار و احتمال، شامل انواع توزیع‌های احتمال، کاربردهای عملی آن‌ها در دنیای واقعی و روش‌های حل مسائل عملی را یاد خواهید گرفت.
+                        </p>
+                        <ul>
+                            <li><strong>توزیع‌های پیوسته:</strong> نرمال، یکنواخت، نمایی، پارتو</li>
+                            <li><strong>توزیع‌های گسسته:</strong> دوجمله‌ای، هندسی، پواسون</li>
+                            <li><strong>کاربردهای عملی:</strong> مسائل واقعی از حوزه‌های مختلف</li>
+                            <li><strong>شبیه‌سازی:</strong> استفاده از R برای حل مسائل</li>
+                            <li><strong>تمرین‌های توتوریوم:</strong> تقویت مفاهیم با تمرین‌های عملی</li>
+                        </ul>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>ساختار دوره</h3>
+                        <p>این دوره شامل موارد زیر است:</p>
+                        <ul>
+                            <li>مبانی نظری هر توزیع با فرمول‌های کامل</li>
+                            <li>مثال‌های عملی و کاربردی از مسائل واقعی</li>
+                            <li>کدهای R برای شبیه‌سازی و محاسبات</li>
+                            <li>تمرین‌های حل شده گام به گام</li>
+                            <li>تمرین‌های توتوریوم با حل کامل</li>
+                            <li>مسائل چالش‌برانگیز برای تقویت مهارت</li>
+                        </ul>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3>فرمول‌های کلیدی آمار:</h3>
+                        <p><strong>میانگین:</strong> μ = E(X)</p>
+                        <p><strong>واریانس:</strong> σ² = Var(X) = E[(X-μ)²]</p>
+                        <p><strong>انحراف معیار:</strong> σ = √Var(X)</p>
+                        <p><strong>ضریب تغییرات:</strong> CV = σ/μ</p>
+                    </div>
+                </section>
+
+                <section id="continuous-fa" class="section">
+                    <h2>توزیع‌های پیوسته</h2>
+                    
+                    <div class="definition-box">
+                        <h3>تعریف توزیع پیوسته</h3>
+                        <p>
+                            توزیع احتمال پیوسته توزیعی است که متغیر تصادفی آن می‌تواند هر مقدار حقیقی در یک بازه را اتخاذ کند. این توزیع‌ها با تابع چگالی احتمال (PDF) مشخص می‌شوند.
+                        </p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3>خصوصیات کلیدی توزیع‌های پیوسته:</h3>
+                        <p><strong>تابع چگالی احتمال (PDF):</strong> f(x) ≥ 0 برای همه x</p>
+                        <p><strong>مساحت کل زیر منحنی:</strong> ∫_{-∞}^{∞} f(x)dx = 1</p>
+                        <p><strong>تابع توزیع تجمعی (CDF):</strong> F(x) = P(X ≤ x) = ∫_{-∞}^{x} f(t)dt</p>
+                        <p><strong>احتمال نقطه‌ای:</strong> P(X = x₀) = 0</p>
+                        <p><strong>احتمال بازه‌ای:</strong> P(a ≤ X ≤ b) = ∫_a^b f(x)dx</p>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>انواع توزیع‌های پیوسته که در این دوره بررسی می‌شوند:</h3>
+                        <ul>
+                            <li><strong>توزیع یکنواخت (Uniform):</strong> احتمال یکسان در بازه مشخص</li>
+                            <li><strong>توزیع نرمال (Normal):</strong> منحنی زنگوله‌ای، پرکاربردترین توزیع</li>
+                            <li><strong>توزیع نمایی (Exponential):</strong> مدل‌سازی زمان‌های انتظار</li>
+                            <li><strong>توزیع پارتو (Pareto):</strong> مدل‌سازی درآمد و ثروت</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-box">
+                        <div class="step-number">1</div>
+                        <h3>مراحل تحلیل توزیع پیوسته</h3>
+                        <ol>
+                            <li>شناسایی نوع توزیع از روی داده‌ها یا شرایط مسئله</li>
+                            <li>تعیین پارامترهای توزیع</li>
+                            <li>محاسبه آمارگان‌های مرکزی (میانگین، میانه)</li>
+                            <li>محاسبه آمارگان‌های پراکندگی (واریانس، انحراف معیار)</li>
+                            <li>محاسبه احتمالات مختلف</li>
+                            <li>یافتن کوانتیل‌ها و صدک‌ها</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <section id="uniform-fa" class="section">
+                    <h2>توزیع یکنواخت (Uniform Distribution)</h2>
+                    
+                    <div class="definition-box">
+                        <h3>تعریف توزیع یکنواخت</h3>
+                        <p>توزیع یکنواخت در بازه [a, b] به این معنی است که همه نقاط در این بازه احتمال یکسانی دارند. این ساده‌ترین نوع توزیع پیوسته است.</p>
+                        <p><strong>نماد:</strong> X ~ U(a, b)</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3>فرمول‌های کلیدی توزیع یکنواخت:</h3>
+                        <p><strong>تابع چگالی:</strong> f(x) = 1/(b-a) برای a ≤ x ≤ b، و 0 در غیر این صورت</p>
+                        <p><strong>تابع توزیع:</strong> F(x) = (x-a)/(b-a) برای a ≤ x ≤ b</p>
+                        <p><strong>میانگین:</strong> μ = E(X) = (a+b)/2</p>
+                        <p><strong>واریانس:</strong> σ² = Var(X) = (b-a)²/12</p>
+                        <p><strong>انحراف معیار:</strong> σ = (b-a)/(2√3)</p>
+                        <p><strong>میانه:</strong> median = (a+b)/2</p>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>مثال کاربردی: زمان انتظار در سوپرمارکت</h3>
+                        <p>زمان کل انتظار در سوپرمارکت بین 8.5 تا 11 دقیقه توزیع یکنواخت دارد.</p>
+                        <p><strong>سوال‌ها:</strong></p>
+                        <p>الف) احتمال انتظار حداکثر 9 دقیقه چقدر است؟</p>
+                        <p>ب) بازه مرکزی که 68% احتمال را شامل می‌شود چیست؟</p>
+                        <p>ج) میانگین و انحراف معیار زمان انتظار؟</p>
+                        
+                        <div class="translation-note">
+                            <strong>چرا توزیع یکنواخت؟</strong> زمان ورود تصادفی به سوپرمارکت باعث می‌شود هر لحظه از بازه انتظار احتمال یکسانی داشته باشد.
+                        </div>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>حل کامل مسئله:</h3>
+                        <p>X ~ U(8.5, 11)</p>
+                        <p><strong>الف)</strong> P(X ≤ 9) = (9-8.5)/(11-8.5) = 0.5/2.5 = 0.2 = 20%</p>
+                        <p><strong>ب)</strong> μ = (8.5+11)/2 = 9.75, σ = (11-8.5)/(2√3) ≈ 0.72</p>
+                        <p>بازه مرکزی: [μ-σ, μ+σ] = [9.03, 10.47]</p>
+                        <p><strong>ج)</strong> میانگین = 9.75 دقیقه، انحراف معیار = 0.72 دقیقه</p>
+                    </div>
+
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">کپی</button>
+                        <pre><span class="comment"># توزیع یکنواخت در R - Uniform Distribution in R</span>
+
+<span class="comment"># پارامترهای توزیع - Distribution parameters</span>
+a <- 8.5  <span class="comment"># حد پایین - Lower bound</span>
+b <- 11   <span class="comment"># حد بالا - Upper bound</span>
+
+<span class="comment"># محاسبه احتمال - Probability calculation</span>
+prob_less_9 <- punif(9, min = a, max = b)
+print(paste("P(X ≤ 9) =", round(prob_less_9, 3)))
+
+<span class="comment"># محاسبه آمارگان - Statistics calculation</span>
+mean_uniform <- (a + b) / 2
+var_uniform <- (b - a)^2 / 12
+sd_uniform <- sqrt(var_uniform)
+
+print(paste("میانگین:", round(mean_uniform, 2), "دقیقه"))
+print(paste("واریانس:", round(var_uniform, 2)))
+print(paste("انحراف معیار:", round(sd_uniform, 2), "دقیقه"))
+
+<span class="comment"># محاسبه کوانتیل‌ها - Quantiles calculation</span>
+q25 <- qunif(0.25, min = a, max = b)
+q50 <- qunif(0.50, min = a, max = b)
+q75 <- qunif(0.75, min = a, max = b)
+
+print(paste("Q1 (25%):", round(q25, 2)))
+print(paste("Q2 (50%):", round(q50, 2)))
+print(paste("Q3 (75%):", round(q75, 2)))
+
+<span class="comment"># رسم نمودار - Plotting</span>
+x <- seq(a-1, b+1, 0.1)
+y <- dunif(x, min = a, max = b)
+
+plot(x, y, type = "l", lwd = 3, col = "blue",
+     main = "توزیع یکنواخت - زمان انتظار در سوپرمارکت", 
+     xlab = "زمان (دقیقه)", ylab = "چگالی احتمال f(x)",
+     xlim = c(7, 12), ylim = c(0, 0.5))
+
+<span class="comment"># نمایش میانگین و انحراف معیار</span>
+abline(v = mean_uniform, col = "red", lty = 2, lwd = 2)
+abline(v = c(mean_uniform - sd_uniform, mean_uniform + sd_uniform), 
+       col = "green", lty = 3, lwd = 2)
+
+legend("topright", 
+       c("توزیع یکنواخت", "میانگین", "±1 انحراف معیار"),
+       col = c("blue", "red", "green"), 
+       lty = c(1, 2, 3), lwd = 2)</pre>
+                    </div>
+                </section>
+
+                <section id="pareto-fa" class="section">
+                    <h2>توزیع پارتو (Pareto Distribution)</h2>
+                    
+                    <div class="definition-box">
+                        <h3>کاربردهای توزیع پارتو</h3>
+                        <p>توزیع پارتو برای مدل‌سازی توزیع درآمد، اندازه شهرها، و پدیده‌هایی که قانون 80-20 در آن‌ها صدق می‌کند، استفاده می‌شود. این توزیع ویژگی "دم سنگین" دارد.</p>
+                        <p><strong>نماد:</strong> X ~ Pareto(x_m, α)</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3>فرمول‌های کلیدی توزیع پارتو:</h3>
+                        <p><strong>تابع چگالی:</strong> f(x) = (α × x_m^α) / x^(α+1) برای x ≥ x_m</p>
+                        <p><strong>تابع توزیع:</strong> F(x) = 1 - (x_m/x)^α</p>
+                        <p><strong>میانگین:</strong> μ = (α × x_m)/(α-1) برای α > 1</p>
+                        <p><strong>واریانس:</strong> σ² = (α × x_m²)/[(α-1)²(α-2)] برای α > 2</p>
+                        <p><strong>میانه:</strong> median = x_m × 2^(1/α)</p>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>مثال عملی: توزیع درآمد در یک شهر</h3>
+                        <p>فرض کنید درآمد در یک شهر از توزیع پارتو با x_m = 30000 تومان و α = 1.5 پیروی می‌کند.</p>
+                        <p><strong>سوال‌ها:</strong></p>
+                        <p>الف) چه درصد از مردم درآمد بیشتر از 50000 تومان دارند؟</p>
+                        <p>ب) میانگین درآمد چقدر است؟</p>
+                        <p>ج) درآمدی که 20% افراد بالاتر از آن دارند چقدر است؟</p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>حل کامل:</h3>
+                        <p><strong>الف)</strong> P(X > 50000) = (x_m/x)^α = (30000/50000)^1.5 = (0.6)^1.5 ≈ 0.464</p>
+                        <p>پاسخ: حدود 46.4% از مردم درآمد بیشتر از 50000 تومان دارند.</p>
+                        
+                        <p><strong>ب)</strong> μ = (α × x_m)/(α-1) = (1.5 × 30000)/(1.5-1) = 45000/0.5 = 90000 تومان</p>
+                        
+                        <p><strong>ج)</strong> P(X > x) = 0.2 ⟹ (30000/x)^1.5 = 0.2</p>
+                        <p>x = 30000 / (0.2)^(1/1.5) ≈ 82156 تومان</p>
+                    </div>
+
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">کپی</button>
+                        <pre><span class="comment"># توزیع پارتو در R - Pareto Distribution in R</span>
+
+<span class="comment"># نصب و بارگذاری کتابخانه - Install and load library</span>
+# install.packages("VGAM")
+library(VGAM)
+
+<span class="comment"># پارامترهای توزیع - Distribution parameters</span>
+x_m <- 30000  <span class="comment"># حد پایین - Minimum value</span>
+alpha <- 1.5  <span class="comment"># پارامتر شکل - Shape parameter</span>
+
+<span class="comment"># الف) احتمال درآمد بیش از 50000 - Probability of income > 50000</span>
+prob_greater_50k <- 1 - ppareto(50000, scale = x_m, shape = alpha)
+print(paste("P(X > 50000) =", round(prob_greater_50k, 3)))
+print(paste("درصد افراد با درآمد بالای 50000:", round(prob_greater_50k * 100, 1), "%"))
+
+<span class="comment"># ب) میانگین درآمد - Mean income</span>
+if(alpha > 1) {
+    mean_income <- alpha * x_m / (alpha - 1)
+    print(paste("میانگین درآمد:", round(mean_income, 0), "تومان"))
+} else {
+    print("میانگین وجود ندارد (α ≤ 1)")
+}
+
+<span class="comment"># ج) کوانتیل 80% (20% بالاتر از این مقدار) - 80th percentile</span>
+income_80th <- qpareto(0.8, scale = x_m, shape = alpha)
+print(paste("80% مردم درآمد کمتر از", round(income_80th, 0), "تومان دارند"))
+
+<span class="comment"># محاسبه میانه - Median calculation</span>
+median_income <- x_m * (2^(1/alpha))
+print(paste("میانه درآمد:", round(median_income, 0), "تومان"))
+
+<span class="comment"># رسم نمودار - Plotting</span>
+x_range <- seq(x_m, 150000, 1000)
+y_density <- dpareto(x_range, scale = x_m, shape = alpha)
+
+plot(x_range, y_density, type = "l", lwd = 2, col = "purple",
+     main = "توزیع پارتو - توزیع درآمد", 
+     xlab = "درآمد (تومان)", ylab = "چگالی احتمال",
+     xlim = c(30000, 120000))
+
+<span class="comment"># نمایش آمارگان مهم</span>
+abline(v = mean_income, col = "red", lty = 2, lwd = 2)
+abline(v = median_income, col = "blue", lty = 3, lwd = 2)
+abline(v = income_80th, col = "green", lty = 4, lwd = 2)
+
+legend("topright", 
+       c("چگالی پارتو", "میانگین", "میانه", "کوانتیل 80%"),
+       col = c("purple", "red", "blue", "green"), 
+       lty = c(1, 2, 3, 4), lwd = 2)
+
+<span class="comment"># نمایش قانون 80-20 - Show 80-20 rule</span>
+wealth_80_percent <- qpareto(0.8, scale = x_m, shape = alpha)
+print(paste("قانون 80-20: 20% ثروتمندان درآمد بالای", 
+           round(wealth_80_percent, 0), "دارند"))</pre>
+                    </div>
+                </section>
+
+                <section id="exponential-fa" class="section">
+                    <h2>توزیع نمایی (Exponential Distribution)</h2>
+                    
+                    <div class="definition-box">
+                        <h3>کاربردهای توزیع نمایی</h3>
+                        <p>توزیع نمایی برای مدل‌سازی زمان‌های انتظار، طول عمر تجهیزات، فاصله زمانی بین رویدادها، و سیستم‌هایی با ویژگی "بدون حافظه" استفاده می‌شود.</p>
+                        <p><strong>نماد:</strong> X ~ Exp(λ)</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3>فرمول‌های کلیدی توزیع نمایی:</h3>
+                        <p><strong>تابع چگالی:</strong> f(x) = λe^(-λx) برای x ≥ 0</p>
+                        <p><strong>تابع توزیع:</strong> F(x) = 1 - e^(-λx)</p>
+                        <p><strong>میانگین:</strong> μ = E(X) = 1/λ</p>
+                        <p><strong>واریانس:</strong> σ² = Var(X) = 1/λ²</p>
+                        <p><strong>انحراف معیار:</strong> σ = 1/λ</p>
+                        <p><strong>میانه:</strong> median = ln(2)/λ ≈ 0.693/λ</p>
+                        <p><strong>ویژگی بدون حافظه:</strong> P(X > s+t | X > s) = P(X > t)</p>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>مسئله: زمان گارانتی کامپیوتر</h3>
+                        <p>شرکتی چهار کامپیوتر تولید کرده که زمان‌های خرابی آن‌ها عبارتند از:</p>
+                        <p><strong>داده‌ها:</strong> 1200، 1900، 3200، 2400 ساعت</p>
+                        <p><strong>سوال‌ها:</strong></p>
+                        <p>الف) برآورد پارامتر λ از روی داده‌ها</p>
+                        <p>ب) احتمال خرابی در 1000 ساعت اول</p>
+                        <p>ج) زمان گارانتی برای 10% خرابی</p>
+                        <p>د) احتمال اینکه کامپیوتر بیش از 2000 ساعت کار کند</p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>حل کامل مسئله:</h3>
+                        <p><strong>الف) برآورد پارامتر:</strong></p>
+                        <p>میانگین = (1200+1900+3200+2400)/4 = 2175 ساعت</p>
+                        <p>λ̂ = 1/میانگین = 1/2175 ≈ 0.000460</p>
+                        
+                        <p><strong>ب) P(X ≤ 1000):</strong></p>
+                        <p>P(X ≤ 1000) = 1 - e^(-λ×1000) = 1 - e^(-0.000460×1000) ≈ 0.368</p>
+                        
+                        <p><strong>ج) زمان برای 10% خرابی:</strong></p>
+                        <p>0.1 = 1 - e^(-λt) ⟹ t = -ln(0.9)/λ ≈ 229 ساعت</p>
+                        
+                        <p><strong>د) P(X > 2000):</strong></p>
+                        <p>P(X > 2000) = e^(-λ×2000) = e^(-0.000460×2000) ≈ 0.398</p>
+                    </div>
+
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">کپی</button>
+                        <pre><span class="comment"># حل کامل مسئله توزیع نمایی - Complete exponential distribution solution</span>
+
+<span class="comment"># 1. خواندن داده‌ها - Read data</span>
+failure_times <- c(1200, 1900, 3200, 2400)  <span class="comment"># زمان‌های خرابی</span>
+
+<span class="comment"># 2. برآورد پارامتر - Parameter estimation</span>
+mean_time <- mean(failure_times)
+lambda_hat <- 1/mean_time
+
+print("=== برآورد پارامترها ===")
+print(paste("میانگین زمان خرابی:", mean_time, "ساعت"))
+print(paste("برآورد λ:", round(lambda_hat, 6)))
+print(paste("انحراف معیار:", round(1/lambda_hat, 1), "ساعت"))
+
+<span class="comment"># 3. ب) احتمال خرابی در 1000 ساعت</span>
+prob_failure_1000 <- pexp(1000, rate = lambda_hat)
+print(paste("\nP(خرابی در 1000 ساعت) =", round(prob_failure_1000, 3)))
+
+<span class="comment"># 4. ج) زمان گارانتی برای 10% خرابی</span>
+warranty_time <- qexp(0.1, rate = lambda_hat)
+print(paste("زمان گارانتی 10%:", round(warranty_time, 0), "ساعت"))
+
+<span class="comment"># 5. د) احتمال کار بیش از 2000 ساعت</span>
+prob_survival_2000 <- 1 - pexp(2000, rate = lambda_hat)
+print(paste("P(کار بیش از 2000 ساعت) =", round(prob_survival_2000, 3)))
+
+<span class="comment"># 6. محاسبه میانه - Median calculation</span>
+median_time <- log(2) / lambda_hat
+print(paste("میانه زمان خرابی:", round(median_time, 0), "ساعت"))
+
+<span class="comment"># 7. رسم نمودار توزیع</span>
+x_vals <- seq(0, 8000, 100)
+y_density <- dexp(x_vals, rate = lambda_hat)
+y_survival <- 1 - pexp(x_vals, rate = lambda_hat)
+
+<span class="comment"># نمودار چگالی</span>
+par(mfrow = c(1, 2))
+plot(x_vals, y_density, type = "l", lwd = 2, col = "blue",
+     main = "تابع چگالی توزیع نمایی", 
+     xlab = "زمان (ساعت)", ylab = "چگالی احتمال")
+
+<span class="comment"># نمایش آمارگان مهم</span>
+abline(v = mean_time, col = "red", lty = 2, lwd = 2)
+abline(v = median_time, col = "green", lty = 3, lwd = 2)
+abline(v = warranty_time, col = "orange", lty = 4, lwd = 2)
+
+<span class="comment"># نمودار بقا</span>
+plot(x_vals, y_survival, type = "l", lwd = 2, col = "purple",
+     main = "تابع بقا (Survival Function)", 
+     xlab = "زمان (ساعت)", ylab = "P(X > t)")
+
+legend("topright", 
+       c("تابع بقا", "میانگین", "میانه", "گارانتی 10%"),
+       col = c("purple", "red", "green", "orange"), 
+       lty = c(1, 2, 3, 4), lwd = 2)
+
+<span class="comment"># 8. شبیه‌سازی نمونه‌ها</span>
+set.seed(123)
+simulated_failures <- rexp(1000, rate = lambda_hat)
+
+print(paste("\n=== مقایسه نتایج شبیه‌سازی ==="))
+print(paste("میانگین شبیه‌سازی:", round(mean(simulated_failures), 0)))
+print(paste("میانگین تئوری:", round(mean_time, 0)))
+
+<span class="comment"># هیستوگرام شبیه‌سازی</span>
+par(mfrow = c(1, 1))
+hist(simulated_failures, breaks = 30, freq = FALSE,
+     main = "شبیه‌سازی زمان‌های خرابی", 
+     xlab = "زمان (ساعت)", ylab = "چگالی",
+     col = "lightblue", border = "darkblue")
+
+<span class="comment"># اضافه کردن تابع چگالی تئوری</span>
+lines(x_vals, y_density, col = "red", lwd = 3)
+legend("topright", c("شبیه‌سازی", "تئوری"), 
+       fill = c("lightblue", NA), border = c("darkblue", NA),
+       lty = c(NA, 1), col = c(NA, "red"), lwd = c(NA, 3))</pre>
+                    </div>
+                </section>
+
+                <section id="normal-fa" class="section">
+                    <h2>توزیع نرمال (Normal Distribution)</h2>
+                    
+                    <div class="definition-box">
+                        <h3>اهمیت توزیع نرمال</h3>
+                        <p>توزیع نرمال پرکاربردترین توزیع در آمار است و بنیان بسیاری از روش‌های آماری را تشکیل می‌دهد. شکل آن مانند زنگوله است، متقارن حول میانگین و دارای خصوصیات منحصربه‌فردی است.</p>
+                        <p><strong>نماد:</strong> X ~ N(μ, σ²)</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3>فرمول‌های کلیدی توزیع نرمال:</h3>
+                        <p><strong>تابع چگالی:</strong> f(x) = (1/σ√(2π)) × e^(-(x-μ)²/2σ²)</p>
+                        <p><strong>میانگین:</strong> E(X) = μ</p>
+                        <p><strong>واریانس:</strong> Var(X) = σ²</p>
+                        <p><strong>انحراف معیار:</strong> SD(X) = σ</p>
+                        <p><strong>استاندارد:</strong> Z = (X-μ)/σ ~ N(0,1)</p>
+                        <p><strong>قانون 68-95-99.7:</strong> 68% در [μ±σ]، 95% در [μ±2σ]، 99.7% در [μ±3σ]</p>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>مسئله جامع: وزن پرتقال‌ها</h3>
+                        <p>وزن پرتقال‌ها از توزیع نرمال با میانگین 230 گرم و انحراف معیار 25 گرم پیروی می‌کند.</p>
+                        <p><strong>سوال‌ها:</strong></p>
+                        <p>الف) احتمال وزن بیش از 250 گرم؟</p>
+                        <p>ب) 95% پرتقال‌ها کمتر از چه وزنی دارند؟</p>
+                        <p>ج) اگر 9 پرتقال را بسته‌بندی کنیم، احتمال وزن کل بیش از 2 کیلو؟</p>
+                        <p>د) چه درصد پرتقال‌ها در بازه [205, 255] گرم قرار دارند؟</p>
+                        
+                        <div class="translation-note">
+                            <strong>چرا توزیع نرمال؟</strong> وزن پرتقال‌ها تحت تأثیر عوامل متعددی مثل ژنتیک، آب و هوا، و خاک است که بر اساس قضیه حد مرکزی به توزیع نرمال منجر می‌شود.
+                        </div>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>حل کامل مسئله:</h3>
+                        <p>X ~ N(230, 25²)</p>
+                        
+                        <p><strong>الف) P(X > 250):</strong></p>
+                        <p>Z = (250-230)/25 = 0.8</p>
+                        <p>P(X > 250) = P(Z > 0.8) = 1 - Φ(0.8) ≈ 0.212</p>
+                        
+                        <p><strong>ب) صدک 95:</strong></p>
+                        <p>P(X ≤ x) = 0.95 ⟹ x = μ + σ×z₀.₉₅ = 230 + 25×1.645 ≈ 271 گرم</p>
+                        
+                        <p><strong>ج) وزن کل 9 پرتقال:</strong></p>
+                        <p>S = X₁ + X₂ + ... + X₉ ~ N(9×230, √9×25) = N(2070, 75)</p>
+                        <p>P(S > 2000) = P(Z > (2000-2070)/75) = P(Z > -0.93) ≈ 0.824</p>
+                        
+                        <p><strong>د) P(205 ≤ X ≤ 255):</strong></p>
+                        <p>این بازه μ±σ است، پس طبق قانون 68-95-99.7 حدود 68% پرتقال‌ها در این بازه قرار دارند.</p>
+                    </div>
+
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">کپی</button>
+                        <pre><span class="comment"># حل کامل مسئله توزیع نرمال - Complete normal distribution solution</span>
+
+<span class="comment"># پارامترهای توزیع پرتقال‌ها</span>
+mu <- 230     <span class="comment"># میانگین وزن (گرم)</span>
+sigma <- 25   <span class="comment"># انحراف معیار (گرم)</span>
+
+print("=== پارامترهای توزیع ===")
+print(paste("میانگین μ =", mu, "گرم"))
+print(paste("انحراف معیار σ =", sigma, "گرم"))
+print(paste("واریانس σ² =", sigma^2))
+
+<span class="comment"># الف) احتمال وزن بیش از 250 گرم</span>
+prob_heavy <- 1 - pnorm(250, mean = mu, sd = sigma)
+z_score_250 <- (250 - mu) / sigma
+print(paste("\n=== الف) P(X > 250) ==="))
+print(paste("Z-score =", z_score_250))
+print(paste("P(وزن > 250گرم) =", round(prob_heavy, 3)))
+print(paste("درصد پرتقال‌های سنگین:", round(prob_heavy * 100, 1), "%"))
+
+<span class="comment"># ب) صدک 95 (95% کمتر از این وزن)</span>
+weight_95th <- qnorm(0.95, mean = mu, sd = sigma)
+print(paste("\n=== ب) صدک 95% ==="))
+print(paste("95% پرتقال‌ها کمتر از", round(weight_95th, 1), "گرم وزن دارند"))
+
+<span class="comment"># ج) وزن کل 9 پرتقال بیش از 2 کیلو</span>
+n <- 9
+sum_mean <- n * mu           <span class="comment"># میانگین مجموع</span>
+sum_sd <- sqrt(n) * sigma    <span class="comment"># انحراف معیار مجموع</span>
+
+prob_heavy_pack <- 1 - pnorm(2000, mean = sum_mean, sd = sum_sd)
+print(paste("\n=== ج) وزن کل 9 پرتقال ==="))
+print(paste("میانگین وزن کل:", sum_mean, "گرم"))
+print(paste("انحراف معیار وزن کل:", sum_sd, "گرم"))
+print(paste("P(وزن کل > 2کیلو) =", round(prob_heavy_pack, 3)))
+
+<span class="comment"># د) درصد پرتقال‌ها در بازه [205, 255]</span>
+prob_range <- pnorm(255, mu, sigma) - pnorm(205, mu, sigma)
+print(paste("\n=== د) بازه [205, 255] گرم ==="))
+print(paste("این بازه معادل μ±σ است"))
+print(paste("P(205 ≤ X ≤ 255) =", round(prob_range, 3)))
+print(paste("درصد پرتقال‌ها در این بازه:", round(prob_range * 100, 1), "%"))
+
+<span class="comment"># بررسی قانون 68-95-99.7</span>
+print(paste("\n=== قانون 68-95-99.7 ==="))
+range_1sigma <- pnorm(mu + sigma, mu, sigma) - pnorm(mu - sigma, mu, sigma)
+range_2sigma <- pnorm(mu + 2*sigma, mu, sigma) - pnorm(mu - 2*sigma, mu, sigma)
+range_3sigma <- pnorm(mu + 3*sigma, mu, sigma) - pnorm(mu - 3*sigma, mu, sigma)
+
+print(paste("μ±σ [205,255]:", round(range_1sigma * 100, 1), "% (تئوری: 68%)"))
+print(paste("μ±2σ [180,280]:", round(range_2sigma * 100, 1), "% (تئوری: 95%)"))
+print(paste("μ±3σ [155,305]:", round(range_3sigma * 100, 1), "% (تئوری: 99.7%)"))
+
+<span class="comment"># رسم نمودار جامع توزیع نرمال</span>
+x <- seq(mu - 4*sigma, mu + 4*sigma, 1)
+y <- dnorm(x, mean = mu, sd = sigma)
+
+plot(x, y, type = "l", lwd = 3, col = "blue",
+     main = "توزیع نرمال - وزن پرتقال‌ها",
+     xlab = "وزن (گرم)", ylab = "چگالی احتمال",
+     xlim = c(130, 330))
+
+<span class="comment"># نمایش نواحی مهم</span>
+abline(v = mu, col = "red", lty = 2, lwd = 2)
+abline(v = c(mu - sigma, mu + sigma), col = "green", lty = 3, lwd = 2)
+abline(v = c(mu - 2*sigma, mu + 2*sigma), col = "orange", lty = 4, lwd = 2)
+abline(v = weight_95th, col = "purple", lty = 5, lwd = 2)
+
+<span class="comment"># رنگ‌آمیزی نواحی</span>
+x_fill_1sigma <- seq(mu - sigma, mu + sigma, 1)
+y_fill_1sigma <- dnorm(x_fill_1sigma, mu, sigma)
+polygon(c(mu - sigma, x_fill_1sigma, mu + sigma), 
+         c(0, y_fill_1sigma, 0), 
+         col = rgb(0, 1, 0, 0.3), border = NA)
+
+legend("topright", 
+       c("توزیع نرمال", "میانگین μ", "±1σ (68%)", "±2σ (95%)", "صدک 95%"),
+       col = c("blue", "red", "green", "orange", "purple"), 
+       lty = c(1, 2, 3, 4, 5), lwd = 2, cex = 0.8)
+
+<span class="comment"># شبیه‌سازی و مقایسه</span>
+set.seed(123)
+simulated_weights <- rnorm(10000, mean = mu, sd = sigma)
+
+print(paste("\n=== مقایسه با شبیه‌سازی ==="))
+print(paste("میانگین شبیه‌سازی:", round(mean(simulated_weights), 1)))
+print(paste("انحراف معیار شبیه‌سازی:", round(sd(simulated_weights), 1)))
+print(paste("درصد > 250 (شبیه‌سازی):", 
+           round(mean(simulated_weights > 250) * 100, 1), "%"))</pre>
+                    </div>
+                </section>
+
+                <section id="geometric-fa" class="section">
+                    <h2>توزیع هندسی (Geometric Distribution)</h2>
+                    
+                    <div class="definition-box">
+                        <h3>تعریف توزیع هندسی</h3>
+                        <p>توزیع هندسی تعداد آزمایش‌های مستقل با احتمال موفقیت ثابت تا اولین موفقیت را مدل می‌کند. این توزیع خاصیت "بدون حافظه" دارد.</p>
+                        <p><strong>نماد:</strong> X ~ Geo(p)</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3>فرمول‌های کلیدی توزیع هندسی:</h3>
+                        <p><strong>تابع احتمال:</strong> P(X = k) = (1-p)^(k-1) × p برای k = 1, 2, 3, ...</p>
+                        <p><strong>تابع توزیع:</strong> P(X ≤ k) = 1 - (1-p)^k</p>
+                        <p><strong>میانگین:</strong> E(X) = 1/p</p>
+                        <p><strong>واریانس:</strong> Var(X) = (1-p)/p²</p>
+                        <p><strong>انحراف معیار:</strong> σ = √(1-p)/p</p>
+                        <p><strong>ویژگی بدون حافظه:</strong> P(X > m+n | X > m) = P(X > n)</p>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>مسئله: پرتاب سکه تا اولین شیر</h3>
+                        <p>سکه‌ای منصفانه پرتاب می‌شود تا اولین بار شیر بیاید.</p>
+                        <p><strong>سوال‌ها:</strong></p>
+                        <p>الف) میانگین و انحراف معیار تعداد پرتاب‌ها؟</p>
+                        <p>ب) احتمال حداکثر 3 پرتاب؟</p>
+                        <p>ج) اگر در 2 پرتاب اول شیر نیامده، احتمال در پرتاب سوم شیر بیاید؟</p>
+                        <p>د) شبیه‌سازی 100 نمونه در R</p>
+                        
+                        <div class="translation-note">
+                            <strong>چرا توزیع هندسی؟</strong> ما آزمایش‌های مستقل (پرتاب سکه) تا اولین موفقیت (شیر) شمارش می‌کنیم که دقیقاً تعریف توزیع هندسی است.
+                        </div>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>حل کامل مسئله:</h3>
+                        <p>X ~ Geo(p = 0.5)</p>
+                        
+                        <p><strong>الف)</strong> E(X) = 1/0.5 = 2، Var(X) = 0.5/0.25 = 2، σ = √2 ≈ 1.41</p>
+                        <p>انتظار داریم در متوسط 2 پرتاب برای اولین شیر لازم باشد.</p>
+                        
+                        <p><strong>ب)</strong> P(X ≤ 3) = 1 - (0.5)³ = 1 - 0.125 = 0.875</p>
+                        <p>احتمال 87.5% که در حداکثر 3 پرتاب شیر بیاید.</p>
+                        
+                        <p><strong>ج)</strong> به دلیل خاصیت بدون حافظه: P(X = 3 | X > 2) = P(X = 1) = 0.5</p>
+                        
+                        <p><strong>د)</strong> کد شبیه‌سازی در بخش زیر ارائه شده است.</p>
+                    </div>
+
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">کپی</button>
+                        <pre><span class="comment"># حل کامل مسئله توزیع هندسی - Complete geometric distribution solution</span>
+
+<span class="comment"># پارامتر توزیع</span>
+p <- 0.5  <span class="comment"># احتمال موفقیت (شیر) در هر پرتاب</span>
+
+print("=== پارامترهای توزیع ===")
+print(paste("احتمال موفقیت p =", p))
+print(paste("احتمال شکست q = 1-p =", 1-p))
+
+<span class="comment"># الف) میانگین و انحراف معیار</span>
+mean_geo <- 1/p
+var_geo <- (1-p)/(p^2)
+sd_geo <- sqrt(var_geo)
+
+print(paste("\n=== الف) آمارگان ==="))
+print(paste("میانگین تعداد پرتاب‌ها:", mean_geo))
+print(paste("واریانس:", var_geo))
+print(paste("انحراف معیار:", round(sd_geo, 2)))
+
+<span class="comment"># ب) احتمال حداکثر 3 پرتاب</span>
+<span class="comment"># توجه: در R توزیع هندسی از 0 شروع می‌شود</span>
+prob_at_most_3 <- pgeom(2, prob = p)  <span class="comment"># 2 = 3-1</span>
+prob_exactly_1 <- dgeom(0, prob = p)  <span class="comment"># پرتاب اول</span>
+prob_exactly_2 <- dgeom(1, prob = p)  <span class="comment"># پرتاب دوم</span>
+prob_exactly_3 <- dgeom(2, prob = p)  <span class="comment"># پرتاب سوم</span>
+
+print(paste("\n=== ب) احتمالات ==="))
+print(paste("P(X ≤ 3) =", round(prob_at_most_3, 3)))
+print(paste("P(X = 1) =", prob_exactly_1))
+print(paste("P(X = 2) =", prob_exactly_2))
+print(paste("P(X = 3) =", prob_exactly_3))
+
+<span class="comment"># ج) ویژگی بدون حافظه</span>
+prob_3_given_greater_2 <- p  <span class="comment"># P(X=3|X>2) = P(X=1) = p</span>
+print(paste("\n=== ج) ویژگی بدون حافظه ==="))
+print(paste("P(X = 3 | X > 2) =", prob_3_given_greater_2))
+print("این نشان‌دهنده خاصیت بدون حافظه است")
+
+<span class="comment"># د) شبیه‌سازی 100 نمونه</span>
+set.seed(123)
+simulated_tosses <- rgeom(100, prob = p) + 1  <span class="comment"># +1 برای شروع از 1</span>
+
+print(paste("\n=== د) نتایج شبیه‌سازی ==="))
+print(paste("میانگین شبیه‌سازی:", round(mean(simulated_tosses), 2)))
+print(paste("انحراف معیار شبیه‌سازی:", round(sd(simulated_tosses), 2)))
+print(paste("میانگین تئوری:", mean_geo))
+print(paste("انحراف معیار تئوری:", round(sd_geo, 2)))
+
+<span class="comment"># محاسبه فراوانی‌ها</span>
+table_results <- table(simulated_tosses)
+print("\nجدول فراوانی شبیه‌سازی:")
+print(table_results)
+
+<span class="comment"># رسم نمودارهای مقایسه‌ای</span>
+par(mfrow = c(2, 2))
+
+<span class="comment"># 1. تابع احتمال تئوری</span>
+k_values <- 1:10
+prob_values <- dgeom(k_values - 1, prob = p)
+barplot(prob_values, names.arg = k_values,
+        main = "تابع احتمال تئوری",
+        xlab = "تعداد پرتاب‌ها (k)", ylab = "P(X = k)",
+        col = "lightblue", border = "blue")
+
+<span class="comment"># 2. تابع توزیع تجمعی</span>
+cdf_values <- pgeom(k_values - 1, prob = p)
+plot(k_values, cdf_values, type = "s", lwd = 2, col = "red",
+     main = "تابع توزیع تجمعی",
+     xlab = "تعداد پرتاب‌ها (k)", ylab = "P(X ≤ k)")
+grid()
+
+<span class="comment"># 3. هیستوگرام شبیه‌سازی</span>
+hist(simulated_tosses, breaks = 0.5:max(simulated_tosses)+0.5,
+     main = "نتایج شبیه‌سازی (100 نمونه)",
+     xlab = "تعداد پرتاب‌ها", ylab = "فراوانی", 
+     col = "lightgreen", border = "darkgreen")
+
+<span class="comment"># 4. مقایسه شبیه‌سازی با تئوری</span>
+sim_probs <- as.vector(table(simulated_tosses)) / 100
+theo_probs <- dgeom(0:9, prob = p)
+
+plot(1:10, theo_probs, type = "l", lwd = 2, col = "blue",
+     main = "مقایسه تئوری و شبیه‌سازی",
+     xlab = "تعداد پرتاب‌ها", ylab = "احتمال",
+     ylim = c(0, max(c(sim_probs, theo_probs), na.rm = TRUE)))
+
+points(as.numeric(names(table_results)), sim_probs, 
+       col = "red", pch = 16, cex = 1.2)
+
+legend("topright", c("تئوری", "شبیه‌سازی"), 
+       col = c("blue", "red"), lty = c(1, NA), pch = c(NA, 16))
+
+<span class="comment"># بازیابی تنظیمات نمودار</span>
+par(mfrow = c(1, 1))
+
+<span class="comment"># محاسبات اضافی</span>
+print(paste("\n=== محاسبات اضافی ==="))
+print(paste("احتمال بیش از 5 پرتاب:", round(1 - pgeom(4, p), 3)))
+print(paste("میانه (تقریبی):", round(qgeom(0.5, p) + 1, 0)))
+
+<span class="comment"># نمایش خاصیت بدون حافظه با مثال عددی</span>
+print(paste("\nمثال خاصیت بدون حافظه:"))
+print(paste("P(X > 5) =", round(1 - pgeom(4, p), 3)))
+print(paste("P(X > 7 | X > 2) =", round((1 - pgeom(6, p))/(1 - pgeom(1, p)), 3)))
+print(paste("P(X > 5) باید برابر P(X > 7 | X > 2) باشد"))</pre>
+                    </div>
+                </section>
+
+                <section id="binomial-fa" class="section">
+                    <h2>توزیع دوجمله‌ای (Binomial Distribution)</h2>
+                    
+                    <div class="definition-box">
+                        <h3>تعریف توزیع دوجمله‌ای</h3>
+                        <p>توزیع دوجمله‌ای تعداد موفقیت‌ها در n آزمایش مستقل برنولی را مدل می‌کند که هر کدام احتمال موفقیت p دارند.</p>
+                        <p><strong>نماد:</strong> X ~ Bin(n, p)</p>
+                        <p><strong>شرایط:</strong> آزمایش‌های مستقل، احتمال ثابت، تعداد ثابت آزمایش</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3>فرمول‌های کلیدی توزیع دوجمله‌ای:</h3>
+                        <p><strong>تابع احتمال:</strong> P(X = k) = C(n,k) × p^k × (1-p)^(n-k)</p>
+                        <p><strong>ضریب دوجمله‌ای:</strong> C(n,k) = n! / (k!(n-k)!)</p>
+                        <p><strong>میانگین:</strong> E(X) = np</p>
+                        <p><strong>واریانس:</strong> Var(X) = np(1-p)</p>
+                        <p><strong>انحراف معیار:</strong> σ = √(np(1-p))</p>
+                        <p><strong>تقریب نرمال:</strong> اگر np ≥ 5 و n(1-p) ≥ 5</p>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>مسئله: آزمون چهارگزینه‌ای</h3>
+                        <p>دانش‌آموزی آزمون 15 سؤالی چهارگزینه‌ای دارد و به صورت تصادفی پاسخ می‌دهد.</p>
+                        <p><strong>سوال‌ها:</strong></p>
+                        <p>الف) احتمال حداکثر 4 پاسخ صحیح؟</p>
+                        <p>ب) میانگین و انحراف معیار تعداد پاسخ‌های صحیح؟</p>
+                        <p>ج) آیا تقریب نرمال قابل استفاده است؟</p>
+                        <p>د) احتمال بین 2 تا 6 پاسخ صحیح؟</p>
+                        
+                        <div class="translation-note">
+                            <strong>چرا توزیع دوجمله‌ای؟</strong> تعداد ثابت آزمایش مستقل (15 سؤال)، هر آزمایش دو نتیجه (درست/غلط)، احتمال ثابت موفقیت (p=0.25).
+                        </div>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>حل کامل مسئله:</h3>
+                        <p>X ~ Bin(15, 0.25)</p>
+                        
+                        <p><strong>الف)</strong> P(X ≤ 4) = ∑_{k=0}^{4} C(15,k) × (0.25)^k × (0.75)^(15-k) ≈ 0.686</p>
+                        
+                        <p><strong>ب)</strong> E(X) = 15×0.25 = 3.75، σ = √(15×0.25×0.75) ≈ 1.68</p>
+                        
+                        <p><strong>ج)</strong> np = 3.75 < 5 و n(1-p) = 11.25 ≥ 5</p>
+                        <p>تقریب نرمال ایده‌آل نیست زیرا np < 5</p>
+                        
+                        <p><strong>د)</strong> P(2 ≤ X ≤ 6) = P(X ≤ 6) - P(X ≤ 1) ≈ 0.943 - 0.080 = 0.863</p>
+                    </div>
+
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">کپی</button>
+                        <pre><span class="comment"># حل کامل مسئله توزیع دوجمله‌ای - Complete binomial distribution solution</span>
+
+<span class="comment"># پارامترهای توزیع</span>
+n <- 15      <span class="comment"># تعداد سؤالات</span>
+p <- 0.25    <span class="comment"># احتمال پاسخ صحیح (1/4)</span>
+
+print("=== پارامترهای توزیع ===")
+print(paste("تعداد آزمایش n =", n))
+print(paste("احتمال موفقیت p =", p))
+print(paste("احتمال شکست q = 1-p =", 1-p))
+
+<span class="comment"># ب) میانگین و انحراف معیار</span>
+mean_binom <- n * p
+var_binom <- n * p * (1 - p)
+sd_binom <- sqrt(var_binom)
+
+print(paste("\n=== ب) آمارگان ==="))
+print(paste("میانگین E(X) =", mean_binom))
+print(paste("واریانس Var(X) =", var_binom))
+print(paste("انحراف معیار σ =", round(sd_binom, 2)))
+
+<span class="comment"># الف) احتمال حداکثر 4 پاسخ صحیح</span>
+prob_at_most_4 <- pbinom(4, size = n, prob = p)
+print(paste("\n=== الف) P(X ≤ 4) ==="))
+print(paste("P(X ≤ 4) =", round(prob_at_most_4, 3)))
+
+<span class="comment"># محاسبه احتمالات جزئی</span>
+for(k in 0:6) {
+    prob_k <- dbinom(k, size = n, prob = p)
+    print(paste("P(X =", k, ") =", round(prob_k, 4)))
+}
+
+<span class="comment"># ج) بررسی شرایط تقریب نرمال</span>
+condition1 <- n * p
+condition2 <- n * (1 - p)
+print(paste("\n=== ج) بررسی تقریب نرمال ==="))
+print(paste("np =", condition1, "(باید ≥ 5)"))
+print(paste("n(1-p) =", condition2, "(باید ≥ 5)"))
+
+if(condition1 >= 5 && condition2 >= 5) {
+    print("تقریب نرمال قابل استفاده است")
+    <span class="comment"># تقریب نرمال با تصحیح پیوستگی</span>
+    prob_4_normal <- pnorm(4.5, mean = mean_binom, sd = sd_binom)
+    print(paste("P(X ≤ 4) با تقریب نرمال:", round(prob_4_normal, 3)))
+} else {
+    print("تقریب نرمال ایده‌آل نیست (np < 5)")
+}
+
+<span class="comment"># د) احتمال بین 2 تا 6 پاسخ صحیح</span>
+prob_between_2_6 <- pbinom(6, n, p) - pbinom(1, n, p)
+print(paste("\n=== د) P(2 ≤ X ≤ 6) ==="))
+print(paste("P(2 ≤ X ≤ 6) =", round(prob_between_2_6, 3)))
+print(paste("P(X ≤ 6) =", round(pbinom(6, n, p), 3)))
+print(paste("P(X ≤ 1) =", round(pbinom(1, n, p), 3)))
+
+<span class="comment"># محاسبات اضافی</span>
+prob_exactly_mean <- dbinom(round(mean_binom), n, p)
+prob_above_mean <- 1 - pbinom(floor(mean_binom), n, p)
+print(paste("\nاحتمال دقیقاً برابر میانگین:", round(prob_exactly_mean, 3)))
+print(paste("احتمال بالاتر از میانگین:", round(prob_above_mean, 3)))
+
+<span class="comment"># رسم نمودارهای مختلف</span>
+par(mfrow = c(2, 2))
+
+<span class="comment"># 1. تابع احتمال</span>
+k_values <- 0:n
+prob_values <- dbinom(k_values, size = n, prob = p)
+barplot(prob_values, names.arg = k_values,
+        main = "تابع احتمال دوجمله‌ای",
+        xlab = "تعداد پاسخ‌های صحیح (k)", ylab = "P(X = k)",
+        col = "lightcoral", border = "darkred")
+
+<span class="comment"># نمایش میانگین</span>
+abline(v = mean_binom + 0.5, col = "blue", lwd = 2, lty = 2)
+
+<span class="comment"># 2. تابع توزیع تجمعی</span>
+cdf_values <- pbinom(k_values, size = n, prob = p)
+plot(k_values, cdf_values, type = "s", lwd = 2, col = "darkgreen",
+     main = "تابع توزیع تجمعی",
+     xlab = "k", ylab = "P(X ≤ k)")
+grid()
+abline(h = c(0.25, 0.5, 0.75), col = "gray", lty = 3)
+
+<span class="comment"># 3. مقایسه با تقریب نرمال (اگر امکان‌پذیر باشد)</span>
+if(condition1 >= 5 && condition2 >= 5) {
+    x_continuous <- seq(0, n, 0.1)
+    y_normal <- dnorm(x_continuous, mean = mean_binom, sd = sd_binom)
+    
+    plot(k_values, prob_values, type = "h", lwd = 3, col = "red",
+         main = "مقایسه دوجمله‌ای و نرمال",
+         xlab = "k", ylab = "احتمال/چگالی")
+    lines(x_continuous, y_normal, col = "blue", lwd = 2)
+    legend("topright", c("دوجمله‌ای", "تقریب نرمال"), 
+           col = c("red", "blue"), lty = c(1, 1), lwd = c(3, 2))
+} else {
+    <span class="comment"># نمایش محدوده اطمینان</span>
+    lower_bound <- max(0, mean_binom - 2*sd_binom)
+    upper_bound <- min(n, mean_binom + 2*sd_binom)
+    
+    barplot(prob_values, names.arg = k_values,
+            main = "محدوده 95% (μ ± 2σ)",
+            xlab = "k", ylab = "P(X = k)",
+            col = ifelse(k_values >= lower_bound & k_values <= upper_bound, 
+                        "lightblue", "lightgray"))
+    abline(v = c(lower_bound, upper_bound) + 0.5, col = "red", lwd = 2)
+}
+
+<span class="comment"># 4. شبیه‌سازی</span>
+set.seed(123)
+simulated_results <- rbinom(1000, size = n, prob = p)
+hist(simulated_results, breaks = -0.5:(n+0.5), freq = FALSE,
+     main = "شبیه‌سازی (1000 آزمون)",
+     xlab = "تعداد پاسخ‌های صحیح", ylab = "فراوانی نسبی",
+     col = "lightyellow", border = "orange")
+
+<span class="comment"># اضافه کردن تابع احتمال تئوری</span>
+points(k_values, prob_values, col = "red", pch = 16, cex = 1.2)
+lines(k_values, prob_values, col = "red", lwd = 2)
+
+<span class="comment"># بازیابی تنظیمات نمودار</span>
+par(mfrow = c(1, 1))
+
+<span class="comment"># نتایج شبیه‌سازی</span>
+print(paste("\n=== نتایج شبیه‌سازی ==="))
+print(paste("میانگین شبیه‌سازی:", round(mean(simulated_results), 2)))
+print(paste("انحراف معیار شبیه‌سازی:", round(sd(simulated_results), 2)))
+print(paste("درصد نمونه‌هایی که ≤ 4 پاسخ صحیح:", 
+           round(mean(simulated_results <= 4) * 100, 1), "%"))
+
+<span class="comment"># مقایسه کوانتیل‌ها</span>
+quantiles_theo <- qbinom(c(0.25, 0.5, 0.75), size = n, prob = p)
+quantiles_sim <- quantile(simulated_results, c(0.25, 0.5, 0.75))
+
+print(paste("\nکوانتیل‌های تئوری: Q1=", quantiles_theo[1], 
+           ", Q2=", quantiles_theo[2], ", Q3=", quantiles_theo[3]))
+print(paste("کوانتیل‌های شبیه‌سازی: Q1=", quantiles_sim[1], 
+           ", Q2=", quantiles_sim[2], ", Q3=", quantiles_sim[3]))</pre>
+                    </div>
+                </section>
+
+                <section id="central-limit-fa" class="section">
+                    <h2>قضیه حد مرکزی (Central Limit Theorem)</h2>
+                    
+                    <div class="definition-box">
+                        <h3>قضیه حد مرکزی - CLT</h3>
+                        <p>قضیه حد مرکزی یکی از مهم‌ترین قضایای آمار است که بیان می‌کند میانگین نمونه‌ها از هر توزیعی (با میانگین و واریانس محدود) با افزایش اندازه نمونه به توزیع نرمال نزدیک می‌شود.</p>
+                        <p><strong>بیان ریاضی:</strong> اگر X₁, X₂, ..., Xₙ نمونه تصادفی از توزیع با μ و σ² باشند، آنگاه:</p>
+                        <p>X̄ₙ ~ N(μ, σ²/n) برای n بزرگ (معمولاً n ≥ 30)</p>
+                    </div>
+
+                    <div class="formula-box">
+                        <h3>فرمول‌های کلیدی CLT:</h3>
+                        <p><strong>میانگین نمونه:</strong> X̄ = (X₁ + X₂ + ... + Xₙ)/n</p>
+                        <p><strong>توزیع میانگین:</strong> E(X̄) = μ</p>
+                        <p><strong>واریانس میانگین:</strong> Var(X̄) = σ²/n</p>
+                        <p><strong>خطای معیار:</strong> SE = σ/√n</p>
+                        <p><strong>استاندارد:</strong> Z = (X̄ - μ)/(σ/√n) ~ N(0,1)</p>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>مثال: میانگین قد دانشجویان</h3>
+                        <p>قد دانشجویان با میانگین 170 سانتی‌متر و انحراف معیار 10 سانتی‌متر توزیع شده. نمونه‌ای 36 نفره انتخاب می‌کنیم.</p>
+                        <p><strong>سؤالات:</strong></p>
+                        <p>الف) توزیع میانگین نمونه چیست؟</p>
+                        <p>ب) احتمال میانگین نمونه بین 168 تا 172؟</p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>حل:</h3>
+                        <p><strong>الف)</strong> X̄ ~ N(170, 10²/36) = N(170, 100/36) = N(170, 2.78)</p>
+                        <p><strong>ب)</strong> P(168 ≤ X̄ ≤ 172) = P(-1.2 ≤ Z ≤ 1.2) ≈ 0.770</p>
+                    </div>
+                </section>
+
+                <section id="tutorium-fa" class="section">
+                    <h2>تمرین‌های توتوریوم (Tutorium Aufgaben)</h2>
+                    
+                    <div class="definition-box">
+                        <h3>تمرین‌های عملی و توتوریال</h3>
+                        <p>
+                            این بخش شامل تمرین‌های عملی از جلسات توتوریوم است که برای تقویت درک مفاهیم آمار و احتمال طراحی شده‌اند.
+                        </p>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>تمرین توتوریوم A1: توزیع هندسی و شبیه‌سازی</h3>
+                        <p><strong>موضوع:</strong> پرتاب سکه تا اولین شیر و رسم هیستوگرام</p>
+                        <p>
+                            الف) شبیه‌سازی توزیع هندسی برای پرتاب سکه<br>
+                            ب) رسم هیستوگرام متغیرهای تصادفی<br>
+                            ج) زیباسازی نمودار با پارامترهای مناسب<br>
+                            د) اضافه کردن تابع چگالی توزیع نمایی به نمودار
+                        </p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>حل تمرین A1:</h3>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">کپی</button>
+                            <pre><span class="comment"># تمرین توتوریوم A1: توزیع هندسی</span>
+<span class="comment"># Tutorial Exercise A1: Geometric Distribution</span>
+
+<span class="comment"># شبیه‌سازی متغیرهای تصادفی هندسی</span>
+set.seed(123)
+simu <- rgeom(1000, 0.5) + 1  <span class="comment"># +1 برای شروع از 1</span>
+
+<span class="comment"># ج) رسم هیستوگرام با پارامترهای زیباسازی</span>
+hist(simu, 
+     main = "Histogramm der geometrisch verteilten Zufallsvariablen",
+     xlab = "Anzahl der Würfe bevor Kopf fällt", 
+     ylab = "Häufigkeitsdichte",
+     col = "green",           <span class="comment"># رنگ سبز</span>
+     breaks = 20,            <span class="comment"># تعداد بازه‌ها</span>
+     border = 2,             <span class="comment"># رنگ حاشیه</span>
+     freq = FALSE)           <span class="comment"># چگالی به جای فراوانی</span>
+
+<span class="comment"># د) اضافه کردن تابع چگالی نمایی</span>
+<span class="comment"># توجه: سه دستور زیر باید با هم اجرا شوند!</span>
+hist(simu, 
+     main = "Histogramm der geometrisch verteilten Zufallsvariablen",
+     xlab = "Anzahl der Würfe bevor Kopf fällt",
+     ylab = "Häufigkeitsdichte", 
+     col = "green",
+     breaks = 20, 
+     border = 2, 
+     freq = FALSE)
+
+range_values <- seq(min(simu), max(simu), by = 0.1)
+lines(range_values, dexp(range_values, 1), col = "red", lwd = 2)</pre>
+                        </div>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>تمرین توتوریوم A4: توزیع نرمال پیشرفته</h3>
+                        <p><strong>پارامترها:</strong> X ~ N(μ = 5, σ² = 9)</p>
+                        <p>
+                            الف) محاسبه P(X ≤ 2) و P(X ≤ 11)<br>
+                            ب) یافتن کوانتیل‌های 1%, 10%, 50%, 90%, 99%<br>
+                            ج) محاسبه P(0 ≤ X ≤ 2) و P(|X - μ| ≤ 3)<br>
+                            د) یافتن مقدار a برای P(X - μ < -a) = 0.05
+                        </p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>حل کامل تمرین A4:</h3>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">کپی</button>
+                            <pre><span class="comment"># تمرین توتوریوم A4: توزیع نرمال X ~ N(5, 9)</span>
+<span class="comment"># Tutorial Exercise A4: Normal Distribution</span>
+
+<span class="comment"># پارامترهای توزیع</span>
+mu <- 5
+sigma <- 3  <span class="comment"># انحراف معیار (ریشه واریانس)</span>
+
+<span class="comment"># الف) محاسبه احتمالات</span>
+<span class="comment"># P(X ≤ 2)</span>
+prob_x_leq_2 <- pnorm(2, mean = mu, sd = sigma)
+print(paste("P(X ≤ 2) =", round(prob_x_leq_2, 4)))
+
+<span class="comment"># P(X ≤ 11)</span>
+prob_x_leq_11 <- pnorm(11, mean = mu, sd = sigma)
+print(paste("P(X ≤ 11) =", round(prob_x_leq_11, 4)))
+
+<span class="comment"># ب) کوانتیل‌های مختلف</span>
+quantiles <- c(0.01, 0.10, 0.50, 0.90, 0.99)
+quantile_values <- qnorm(quantiles, mean = mu, sd = sigma)
+
+for(i in 1:length(quantiles)) {
+    print(paste("x", quantiles[i], "=", round(quantile_values[i], 3)))
+}
+
+<span class="comment"># ج) احتمالات پیچیده‌تر</span>
+<span class="comment"># P(0 ≤ X ≤ 2)</span>
+prob_0_to_2 <- pnorm(2, mu, sigma) - pnorm(0, mu, sigma)
+print(paste("P(0 ≤ X ≤ 2) =", round(prob_0_to_2, 4)))
+
+<span class="comment"># P(|X - μ| ≤ 3) = P(2 ≤ X ≤ 8)</span>
+prob_within_3 <- pnorm(8, mu, sigma) - pnorm(2, mu, sigma)
+print(paste("P(|X - μ| ≤ 3) =", round(prob_within_3, 4)))
+
+<span class="comment"># د) یافتن مقدار a</span>
+<span class="comment"># P(X - μ < -a) = 0.05</span>
+a_value <- abs(qnorm(0.05, mean = 0, sd = sigma))
+print(paste("a =", round(a_value, 4)))
+
+<span class="comment"># بررسی: P(X - μ > a) = 0.05</span>
+a_check <- qnorm(0.95, mean = 0, sd = sigma)
+print(paste("a (بررسی) =", round(a_check, 4)))</pre>
+                        </div>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>تمرین توتوریوم A5: آزمون عملکرد</h3>
+                        <p><strong>موضوع:</strong> آزمون عملکرد با توزیع نرمال μ = 150، σ = 36</p>
+                        <p>
+                            الف) رسم تابع چگالی توزیع<br>
+                            ب) محاسبه احتمالات مختلف و نمایش به صورت سطح زیر منحنی<br>
+                            ج) یافتن کوانتیل 10% و تفسیر معنای آن
+                        </p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>حل تمرین A5:</h3>
+                        <div class="code-block">
+                            <button class="copy-btn" onclick="copyCode(this)">کپی</button>
+                            <pre><span class="comment"># تمرین توتوریوم A5: آزمون عملکرد</span>
+<span class="comment"># Tutorial Exercise A5: Performance Test</span>
+
+<span class="comment"># پارامترهای توزیع</span>
+mu_test <- 150
+sigma_test <- 36
+
+<span class="comment"># الف) رسم تابع چگالی</span>
+x_vals <- seq(mu_test - 4*sigma_test, mu_test + 4*sigma_test, 1)
+y_vals <- dnorm(x_vals, mean = mu_test, sd = sigma_test)
+
+plot(x_vals, y_vals, type = "l", lwd = 2, col = "blue",
+     main = "Dichtefunktion der Normalverteilung N(150, 36²)",
+     xlab = "x", ylab = "f(x)",
+     xlim = c(30, 270), ylim = c(0, max(y_vals)*1.1))
+
+<span class="comment"># نمایش میانگین</span>
+abline(v = mu_test, col = "red", lty = 2, lwd = 2)
+text(mu_test, max(y_vals)*0.8, "μ = 150", pos = 4)
+
+<span class="comment"># ب1) P(X ≤ 140) و نمایش سطح</span>
+prob_140 <- pnorm(140, mean = mu_test, sd = sigma_test)
+print(paste("P(X ≤ 140) =", round(prob_140, 4)))
+
+<span class="comment"># نمایش سطح زیر منحنی</span>
+x_fill_140 <- seq(30, 140, 1)
+y_fill_140 <- dnorm(x_fill_140, mu_test, sigma_test)
+polygon(c(30, x_fill_140, 140), c(0, y_fill_140, 0), 
+         col = "lightblue", border = NA)
+
+<span class="comment"># ب4) P(130 < X < 200)</span>
+prob_130_200 <- pnorm(200, mu_test, sigma_test) - pnorm(130, mu_test, sigma_test)
+print(paste("P(130 < X < 200) =", round(prob_130_200, 4)))
+
+<span class="comment"># ج) کوانتیل 10%</span>
+x_10_percent <- qnorm(0.1, mean = mu_test, sd = sigma_test)
+print(paste("10%-Quantil =", round(x_10_percent, 1)))
+print("10% der Testteilnehmer haben kleiner (gleich) 103.86 Punkte.")</pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="exercises-fa" class="section">
+                    <h2>تمرین‌های کاربردی و مسائل حل شده</h2>
+                    
+                    <div class="definition-box">
+                        <h3>مجموعه جامع تمرین‌های عملی</h3>
+                        <p>
+                            این بخش شامل مسائل کاربردی از انواع توزیع‌های مختلف است که با روش گام به گام حل شده‌اند.
+                        </p>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>مسئله 1: کنترل کیفیت تولید (توزیع نرمال)</h3>
+                        <p>
+                            کارخانه‌ای قطعاتی با میانگین وزن 100 گرم و انحراف معیار 5 گرم تولید می‌کند.
+                        </p>
+                        <p>الف) احتمال قطعه‌ای بین 95 تا 105 گرم؟</p>
+                        <p>ب) حد کنترل کیفیت برای رد 5% قطعات؟</p>
+                    </div>
+
+                    <div class="solution-box">
+                        <h3>حل مسئله 1:</h3>
+                        <p>X ~ N(100, 5²)</p>
+                        <p><strong>الف)</strong> P(95 ≤ X ≤ 105) = Φ(1) - Φ(-1) ≈ 0.683</p>
+                        <p><strong>ب)</strong> حد بالا: 100 + 5×1.645 ≈ 108.2 گرم</p>
+                        <p>حد پایین: 100 - 5×1.645 ≈ 91.8 گرم</p>
+                    </div>
+
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">کپی</button>
+                        <pre><span class="comment"># حل کامل مسائل کاربردی</span>
+<span class="comment"># Complete solution for applied problems</span>
+
+<span class="comment"># مسئله 1: کنترل کیفیت</span>
+mu_quality <- 100
+sigma_quality <- 5
+
+<span class="comment"># الف) احتمال بین 95 تا 105</span>
+prob_range <- pnorm(105, mu_quality, sigma_quality) - 
+              pnorm(95, mu_quality, sigma_quality)
+print(paste("P(95 ≤ X ≤ 105) =", round(prob_range, 3)))
+
+<span class="comment"># ب) حدود کنترل کیفیت</span>
+upper_limit <- qnorm(0.975, mu_quality, sigma_quality)
+lower_limit <- qnorm(0.025, mu_quality, sigma_quality)
+print(paste("حد بالا:", round(upper_limit, 1), "گرم"))
+print(paste("حد پایین:", round(lower_limit, 1), "گرم"))</pre>
+                    </div>
+                </section>
+
+                <section id="files-overview-fa" class="section">
+                    <h2>نمای کلی فایل‌ها</h2>
+                    
+                    <div class="definition-box">
+                        <h3>فایل‌های تمرینی موجود در این دوره</h3>
+                        <p>
+                            این بخش نمای کلی از تمام فایل‌ها و تمرین‌هایی که در این دوره استفاده شده‌اند ارائه می‌دهد.
+                        </p>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h3>فایل‌های توتوریوم (Tutorium Files)</h3>
+                        <table class="distribution-table">
+                            <tr>
+                                <th>نام فایل</th>
+                                <th>محتوا</th>
+                                <th>موضوع</th>
+                                <th>توضیح</th>
+                            </tr>
+                            <tr>
+                                <td>Tutorium_7.A1.pdf</td>
+                                <td>توزیع هندسی</td>
+                                <td>شبیه‌سازی و هیستوگرام</td>
+                                <td>رسم نمودار و زیباسازی، اضافه کردن تابع نمایی</td>
+                            </tr>
+                            <tr>
+                                <td>Tutorium_7.A4.pdf</td>
+                                <td>توزیع نرمال پیشرفته</td>
+                                <td>محاسبات کوانتیل و احتمال</td>
+                                <td>X ~ N(5, 9)، محاسبه مقادیر مختلف a</td>
+                            </tr>
+                            <tr>
+                                <td>Übungs_7.A4.pdf</td>
+                                <td>تمرین‌های توزیع نرمال</td>
+                                <td>احتمالات پیچیده</td>
+                                <td>P(|X-μ| ≤ 3)، کوانتیل‌های مختلف</td>
+                            </tr>
+                            <tr>
+                                <td>Übungsblatt_1_Aufgabe_5.pdf</td>
+                                <td>آزمون عملکرد</td>
+                                <td>توزیع نرمال μ=150, σ=36</td>
+                                <td>رسم تابع چگالی، محاسبه سطوح</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="exercise-box">
