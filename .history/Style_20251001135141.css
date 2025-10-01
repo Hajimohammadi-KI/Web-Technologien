@@ -1,0 +1,15 @@
+nav {
+  display: flex;
+  flex-direction: row; /* افقی (افقی=row) */
+  justify-content: center; /* وسط‌چین افقی */
+  align-items: center; /* وسط‌چین عمودی */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #f6f5f0;
+  padding: 10px 20px;
+  gap: 30px;
+  font-family: sans-serif;
+  font-size: 1.1em;
+}

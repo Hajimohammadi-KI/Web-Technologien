@@ -1,0 +1,258 @@
+/* ==== 1. Reset-Regeln ==== */
+/* Setzt Standard-Margins und -Paddings aller Elemente auf 0 und verwendet border-box für das Box-Modell.
+  Wirkung: Vereinheitlicht das Layout in allen Browsern und verhindert unerwartete Abstände. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==== 2. Globaler Seitenaufbau ==== */
+/* Macht Bilder responsiv, sodass sie sich an den Container anpassen und das Seitenverhältnis beibehalten.
+  Wirkung: Bilder werden nie zu groß und passen sich flexibel an verschiedene Bildschirmgrößen an. */
+img.responsive-img {
+  width: 100%;
+  height: auto;
+  max-width: 100vw;
+  display: block;
+}
+
+/* Passt die maximale Bildbreite auf kleinen Bildschirmen an.
+  Wirkung: Bilder werden auf kleinen Geräten nicht breiter als der Container. */
+@media (max-width: 600px) {
+  img.responsive-img {
+   max-width: 100%;
+  }
+}
+
+/* Richtet das Body-Element mit Flexbox aus, zentriert den Inhalt vertikal und horizontal,
+  setzt Schriftart und Hintergrundbild.
+  Wirkung: Die Seite ist immer mittig, mit schönem Hintergrund und konsistenter Schrift. */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: 60px;
+  font-family: 'Libre Baskerville', serif;
+  position: relative;
+  background-image: url('img/nova-rock2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ==== 3. Header & Footer ==== */
+/* Header und Footer sind immer oben und unten fixiert, nehmen die volle Breite ein,
+  haben halbtransparenten Hintergrund und stehen im Vordergrund.
+  Wirkung: Navigation und Footer sind immer sichtbar und überlagern den Seiteninhalt leicht. */
+header,
+footer {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.7);
+  color: #000;
+  padding: 10px 0;
+  text-align: center;
+  z-index: 1000;
+}
+header { top: 0; }
+footer { bottom: 0; }
+
+/* ==== 4. Navigation ==== */
+/* Navigation wird als horizontale Leiste mit Flexbox dargestellt.
+  Wirkung: Links sind nebeneinander, zentriert und haben bei Hover/Aktiv einen farbigen Hintergrund. */
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+nav ul li {
+  margin: 0 15px;
+}
+nav ul li a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: rgba(245, 160, 63, 0.8);
+  color: #fff;
+}
+
+/* ==== 5. Canvas-Container ==== */
+/* Hauptcontainer mit halbtransparentem Hintergrund, abgerundeten Ecken und Rahmen.
+  Wirkung: Inhalt hebt sich vom Hintergrund ab, bleibt aber leicht durchsichtig. */
+.canvas-container {
+  position: relative;
+  z-index: 1;
+  width: 90vw;
+  max-width: 1000px;
+  margin: 80px auto 40px;
+  background-color: rgba(128, 128, 128, 0.7);
+  color: #000;
+  border: 2px solid rgba(12, 12, 12, 0.9);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* Orangefarbene Boxen für besondere Inhalte.
+  Wirkung: Hervorhebung von Inhalten durch auffällige Farbe und zentrierten Text. */
+.box {
+  background-color: rgba(245, 160, 63, 0.8);
+  color: #000;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* ==== 6. Formular-Layout ==== */
+/* Zentrierte Container für Formulare mit dunklem Hintergrund, abgerundeten Ecken und Schatten.
+  Wirkung: Formulare sind klar abgegrenzt und optisch hervorgehoben. */
+.form-container,
+.registration-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 400px;
+  margin: 40px auto;
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  direction: ltr;
+  text-align: left;
+}
+
+/* Gruppiert Label und Input untereinander mit Abstand.
+  Wirkung: Formularelemente sind übersichtlich und gut lesbar angeordnet. */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-group label {
+  font-weight: bold;
+}
+.form-group input {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 2.5em;
+}
+
+/* ==== 7. Buttons ==== */
+/* Formulare verwenden Flexbox für gleichmäßigen Abstand zwischen Elementen.
+  Wirkung: Buttons und Felder sind gleichmäßig verteilt. */
+.form-container form,
+.registration-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+/* Einheitliche Grundstile für Buttons.
+  Wirkung: Buttons sehen konsistent aus und sind gut bedienbar. */
+.form-container button,
+.registration-container button {
+  width: 100%;
+  height: 2.5em;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Primär-Button (z.B. Einloggen/Registrieren) mit orangem Hintergrund.
+  Wirkung: Hauptaktion wird hervorgehoben. */
+button.primary {
+  background-color: rgba(245, 160, 63, 0.8);
+  color: #000;
+}
+button.primary:hover {
+  background-color: rgba(245, 140, 43, 0.8);
+}
+/* Sekundär-Button (z.B. Zurück) ebenfalls orange, aber für Nebenaktionen.
+  Wirkung: Nebenaktionen sind sichtbar, aber weniger dominant. */
+button.secondary {
+  background-color: rgba(245, 160, 63, 0.8);
+  color: #000;
+}
+button.secondary:hover {
+  background-color: rgba(245, 140, 43, 0.8);
+}
+
+/* Zusätzliche Abstände für Login-Aktionen.
+  Wirkung: Aktionen im Login-Bereich sind klar voneinander getrennt. */
+.login-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ==== 8. Line-Up-Grid ==== */
+/* Grid-Layout für Band-Liste, standardmäßig eine Spalte.
+  Wirkung: Bands werden übersichtlich untereinander angezeigt. */
+.grid-lineup {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+/* Einzelne Band-Boxen mit orangem Hintergrund und abgerundeten Ecken.
+  Wirkung: Jede Band wird optisch hervorgehoben. */
+.band {
+  background-color: rgba(245, 160, 63, 0.8);
+  color: #000;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+.band img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+.band h2 {
+  margin: 10px 0;
+}
+.band time {
+  display: block;
+  margin-top: 8px;
+  font-style: italic;
+  color: #d71212;
+}
+/* Headliner-Band mit kräftigerem Orange und mehr Padding.
+  Wirkung: Headliner wird besonders hervorgehoben. */
+.headliner-box {
+  background-color: rgba(245, 160, 63, 0.9);
+  color: #000;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+/* ==== 9. Responsive Breakpoints ==== */
+/* Ab 360px: Canvas wird breiter, Grid hat 2 Spalten.
+  Wirkung: Mehr Platz für Inhalt auf größeren Geräten. */
+@media (min-width: 360px) {
+  .canvas-container { width: 80vw; }
+  .grid-lineup { grid-template-columns: repeat(2, 1fr); }
+}
+/* Ab 600px: Canvas noch breiter, Grid hat 3 Spalten.
+  Wirkung: Optimale Nutzung des Platzes auf Tablets und kleinen Desktops. */
+@media (min-width: 600px) {
+  .canvas-container { width: 60vw; }
+  .grid-lineup { grid-template-columns: repeat(3, 1fr); }
+}
+/* Ab 900px: Canvas maximal breit.
+  Wirkung: Inhalt bleibt zentriert und angenehm lesbar auf großen Bildschirmen. */
+@media (min-width: 900px) {
+  .canvas-container { width: 50vw; }
+}

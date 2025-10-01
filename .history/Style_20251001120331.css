@@ -86,9 +86,42 @@ nav a {
   transition: color 0.2s; /* Farbeffekt (Farbeffekt=افکت تغییر رنگ) beim Hover */
 }
 nav a:hover {
-  color: #444; /* Dunklere Farbe (dunklere Farbe=رنگ تیره‌تر) für Link beim Hover */
+  color: #120fda;  /* Blaue Farbe (Blaue Farbe=رنگ آبی) beim Hover */
   border-bottom: 1px solid #444; /* Unterstrich (Unterstrich=خط زیر) beim Hover */
 }
+nav a:active {
+  color: #e00d18; /* Rote Farbe (Rote Farbe=رنگ قرمز) für aktiven Link (برای لینک فعال رنگ قرمز) */
+  font-weight: bold; /* Fettere Schrift (Fettere Schrift=فونت ضخیم‌تر) für aktiven Link (برای لینک فعال فونت ضخیم‌تر) */
+  border-bottom: 2px solid #df0c0c; /* Stärkerer Unterstrich (Stärkerer Unterstrich=خط زیر ضخیم‌تر) für aktiven Link (برای لینک فعال خط زیر ضخیم‌تر) */
+  
+}
+nav a.active {
+  color: #0de053; /* Grüne Farbe (grüne Farbe=رنگ سبز) für den aktiven Link (برای لینک فعال رنگ سبز) */
+  font-weight: bold; /* Fettere Schrift (fettere Schrift=فونت ضخیم‌تر) für den aktiven Link (برای لینک فعال فونت ضخیم‌تر) */
+  border-bottom: 2px solid #222121; /* Stärkerer Unterstrich (stärkerer Unterstrich=خط زیر ضخیم‌تر) für den aktiven Link (برای لینک فعال خط زیر ضخیم‌تر) */
+  
+}
+/* 
+  Unterschied zwischen a.active und a:active:
+  (Unterschied=تفاوت, zwischen=بین)
+  a.active wählt alle <a>-Elemente mit der Klasse "active" aus.
+  (wählt=انتخاب می‌کند, Klasse=کلاس)
+  Beispiel: <a href="#" class="active">Home</a>
+  Wird verwendet, um das aktuell ausgewählte Menüelement dauerhaft zu markieren.
+  (aktuell=فعلی, ausgewählte=انتخاب‌شده, dauerhaft=دائمی, markieren=مشخص کردن)
+  ---
+  a:active ist eine Pseudoklasse, die <a>-Elemente im Moment des Anklickens auswählt.
+  (Pseudoklasse=کلاس شبه, Moment=لحظه, Anklickens=کلیک کردن)
+  Beispiel: a:active { color: red; }
+  Die Änderung ist nur sichtbar, solange die Maustaste gedrückt ist.
+  (sichtbar=قابل مشاهده, solange=تا زمانی که, Maustaste=دکمه ماوس, gedrückt=فشرده)
+  ---
+  Zusammengefasst:
+  a.active → Selektor für eine Klasse, dauerhaft, manuell gesetzt.
+  (Selektor=سِلِکتور, Klasse=کلاس, dauerhaft=دائمی, manuell=دستی, gesetzt=قرار داده شده)
+  a:active → Pseudoklasse, nur während des Klicks aktiv, automatisch vom Browser gesetzt.
+  (nur=فقط, während=در هنگام, Klicks=کلیک, aktiv=فعال, automatisch=خودکار, Browser=مرورگر)
+*/
 /* 
   Die .container-Klasse wird verwendet, um den Inhalt (Inhalt=محتوا) auf der Seite zu zentrieren (zentrieren=مرکزچین) und die maximale Breite (maximale Breite=حداکثر عرض) zu begrenzen.
   Ein Container (Container=ظرف) sorgt dafür, dass der Inhalt nicht zu breit (zu breit=خیلی عریض) wird und auf großen Bildschirmen (Bildschirmen=صفحه‌نمایش‌ها) besser lesbar (lesbar=قابل خواندن) bleibt.

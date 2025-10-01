@@ -1,0 +1,323 @@
+/* ==== 1. Reset-Regeln ==== */ /* قوانین ریست (بازنشانی) */
+/* 
+  Schreibe für alle Zeilen deutsche Kommentare und erkläre die Wörter auf Persisch innerhalb des deutschen Satzes. (برای همه خطوط کامنت آلمانی بنویس و معنی کلمات را به فارسی داخل جمله آلمانی به فارسی بنویس)
+*/
+
+/* 
+  Stile für responsive Bilder. (Stile=استایل‌ها, responsive=واکنش‌گرا, Bilder=تصاویر)
+  Die .responsive-img Klasse sorgt dafür, dass Bilder sich an den Container anpassen und das Seitenverhältnis (Seitenverhältnis=نسبت ابعاد) beibehalten. 
+  Wende diese Klasse auf <img>-Elemente an, damit sie auf verschiedenen Bildschirmgrößen und Geräten (Geräten=دستگاه‌ها) korrekt angezeigt werden.
+*/
+img.responsive-img {
+  width: 100%; /* Die Breite (Breite=عرض) des Bildes ist immer gleich wie die des Elternelements (Elternelements=عنصر والد). */
+  height: auto; /* Das Seitenverhältnis (Seitenverhältnis=نسبت ابعاد) des Bildes bleibt erhalten. */
+  max-width: 100vw; /* Das Bild wird nie breiter als das Browserfenster (Browserfenster=پنجره مرورگر). */
+  display: block; /* Entfernt zusätzlichen Platz (Platz=فضا) unter dem Bild. */
+}
+
+@media (max-width: 600px) {
+  img.responsive-img {
+  max-width: 100%; /* Auf kleinen Seiten (kleinen=کوچک), ist die maximale Breite (maximale Breite=حداکثر عرض) des Bildes gleich wie die des Elternelements. */
+  }
+}
+
+/* html und body nehmen die gesamte Breite (Breite=عرض) und Höhe (Höhe=ارتفاع) des Viewports (Viewports=صفحه نمایش) ein. */
+html, body {
+  width: 100vw; /* Gesamte Breite (gesamte=کامل, Breite=عرض) */
+  height: 100vh; /* Gesamte Höhe (gesamte=کامل, Höhe=ارتفاع) */
+  margin: 0; /* Kein äußerer Abstand (äußerer Abstand=حاشیه بیرونی) */
+  padding: 0; /* Kein innerer Abstand (innerer Abstand=فاصله داخلی) */
+  overflow: hidden; /* Verhindert zusätzliches Scrollen (zusätzliches Scrollen=اسکرول اضافی) */
+}
+
+/* body verwendet eine serifenlose Schriftart (serifenlose Schriftart=فونت بدون سریف) und hat ein Hintergrundbild (Hintergrundbild=تصویر پس‌زمینه) */
+body {
+  font-family: Arial, sans-serif; /* Serifenlose Schriftart (serifenlose=بدون سریف, Schriftart=فونت) */
+  box-sizing: border-box; /* Box-Modell (Box-Modell=مدل جعبه‌ای) mit Rahmen (Rahmen=حاشیه) und Innenabstand (Innenabstand=فاصله داخلی) */
+  background: url("img/spotify-livestreaming-virtual-concerts-feat.jpeg") center center no-repeat; /* Hintergrundbild (Hintergrundbild=تصویر پس‌زمینه) zentriert (zentriert=وسط) und ohne Wiederholung (Wiederholung=تکرار) */
+  background-size: cover; /* Hintergrundbild (Hintergrundbild=تصویر پس‌زمینه) bedeckt die gesamte Fläche (gesamte Fläche=کل صفحه) */
+}
+
+/* .main-content wird absolut zentriert (absolut=مطلق, zentriert=مرکزچین) und hat maximale Breite (maximale Breite=حداکثر عرض) */
+.main-content {
+  position: absolute; /* Absolute Positionierung (absolute=مطلق, Positionierung=موقعیت) */
+  top: 50%; /* Von oben 50% (oben=بالا) */
+  left: 50%; /* Von links 50% (links=چپ) */
+  transform: translate(-50%, -50%); /* Zentriert das Element (zentriert=مرکزچین, Element=عنصر) */
+  width: 90vw; /* 90% der Viewport-Breite (Viewport-Breite=عرض صفحه) */
+  max-width: 1200px; /* Maximale Breite 1200px (maximale Breite=حداکثر عرض) */
+  color: #222; /* Textfarbe dunkelgrau (Textfarbe=رنگ متن, dunkelgrau=خاکستری تیره) */
+  text-align: center; /* Text zentriert (zentriert=وسط) */
+}
+
+h1, h2, h3 {
+  color: #333; /* Dunkle Farbe (dunkle Farbe=رنگ تیره) für Überschriften (Überschriften=عناوین) */
+  margin-bottom: 10px; /* Abstand unten (Abstand unten=فاصله پایین) für Überschriften */
+}
+
+p {
+  color: #555; /* Graue Farbe (graue Farbe=رنگ خاکستری) für Absätze (Absätze=پاراگراف‌ها) */
+  line-height: 1.6; /* Erhöhte Zeilenhöhe (Zeilenhöhe=ارتفاع خط) für bessere Lesbarkeit (Lesbarkeit=خوانایی) */
+  margin-bottom: 15px; /* Abstand unten (Abstand unten=فاصله پایین) für Absätze */
+}
+
+/* 
+  Stile für die Navigationsleiste (Navigationsleiste=نوار ناوبری) und den Container (Container=ظرف).
+  Die nav-Stile erzeugen eine horizontale Navigationsleiste mit Abstand (Abstand=فاصله) und Hover-Effekten (Hover-Effekten=افکت هاور).
+  Die .container-Klasse zentriert den Inhalt (Inhalt=محتوا) und begrenzt die maximale Breite (maximale Breite=حداکثر عرض) für bessere Lesbarkeit.
+*/
+nav {
+  justify-content: center; /* Zentriert die Navigations-Items (zentriert=مرکزچین, Navigations-Items=آیتم‌های ناوبری) */
+  position: fixed; /* Fixiert die Navigationsleiste oben (fixiert=ثابت, oben=بالا) */
+  top: 0; /* Richtet die Leiste am oberen Rand (oberen Rand=لبه بالا) aus. */
+  /* Entfernt: bottom: 0;  (Redundant für oben fixierte horizontale Navigationsleiste) */
+  /* در CSS تگ nav این خط هست: bottom: 0; — این برای horizontal navbar اضافی است و اگر هدف navbar بالای صفحه باشد حذفش کن. */
+  width: 100%; /* Die Leiste nimmt die gesamte Breite (gesamte Breite=تمام عرض) ein. */
+  z-index: 1000; /* Stellt sicher, dass die Leiste über anderen Elementen (anderen Elementen=سایر عناصر) bleibt. */
+  background: #f6f5f0; /* Heller Hintergrund (heller Hintergrund=رنگ پس‌زمینه روشن) für die Navigationsleiste */
+  padding: 10px 20px; /* Innenabstand (Innenabstand=فاصله داخلی) für die Navigationsleiste */
+  display: flex; /* Zeigt die Items horizontal (horizontal=افقی) an */
+  gap: 30px; /* Abstand (Abstand=فاصله) zwischen den Navigations-Items */
+  font-family: sans-serif; /* Einfache Schriftart (einfache Schriftart=فونت ساده) für Navigation */
+  font-size: 1.1em; /* Größere Schriftgröße (Schriftgröße=اندازه فونت) für Navigation */
+}
+nav a {
+  text-decoration: none; /* Entfernt Unterstreichung (Unterstreichung=خط زیر) von Links */
+  color: #727272; /* Graue Farbe (graue Farbe=رنگ خاکستری) für Links */
+  transition: color 0.2s; /* Farbeffekt (Farbeffekt=افکت تغییر رنگ) beim Hover */
+}
+nav a:hover {
+  color: #120fda;  /* Blaue Farbe (Blaue Farbe=رنگ آبی) beim Hover */
+  border-bottom: 1px solid #444; /* Unterstrich (Unterstrich=خط زیر) beim Hover */
+}
+nav a:active {
+  color: #e00d18; /* Rote Farbe (Rote Farbe=رنگ قرمز) für aktiven Link (برای لینک فعال رنگ قرمز) */
+  font-weight: bold; /* Fettere Schrift (Fettere Schrift=فونت ضخیم‌تر) für aktiven Link (برای لینک فعال فونت ضخیم‌تر) */
+  border-bottom: 2px solid #df0c0c; /* Stärkerer Unterstrich (Stärkerer Unterstrich=خط زیر ضخیم‌تر) für aktiven Link (برای لینک فعال خط زیر ضخیم‌تر) */
+  
+}
+nav a.active {
+  color: #0de053; /* Grüne Farbe (grüne Farbe=رنگ سبز) für den aktiven Link (برای لینک فعال رنگ سبز) */
+  font-weight: bold; /* Fettere Schrift (fettere Schrift=فونت ضخیم‌تر) für den aktiven Link (برای لینک فعال فونت ضخیم‌تر) */
+  border-bottom: 2px solid #222121; /* Stärkerer Unterstrich (stärkerer Unterstrich=خط زیر ضخیم‌تر) für den aktiven Link (برای لینک فعال خط زیر ضخیم‌تر) */
+  
+}
+/* 
+  Unterschied zwischen a.active und a:active:
+  
+  /* 
+    a.active 
+    a.active → Selektor für eine Klasse, dauerhaft, manuell gesetzt.
+    یعنی وقتی به یک لینک کلاس active بدهیم، همیشه این استایل را دارد تا زمانی که کلاس را برداریم.
+    عملکرد: این باعث می‌شود لینک‌هایی که کلاس 
+     دارند همیشه با استایل مخصوص نمایش داده شوند (مثلاً رنگ سبز و خط زیر ضخیم‌تر)، حتی اگر روی آن کلیک نشده باشد. معمولاً برای نمایش صفحه فعال در منو استفاده می‌شود.active { color: green; }
+  /* 
+    a:active 
+    a:active → Pseudoklasse, nur während des Klicks aktiv, automatisch vom Browser gesetzt.
+    یعنی وقتی روی یک لینک کلیک می‌کنیم، تا زمانی که دکمه ماوس را نگه داشته‌ایم، استایل فعال را می‌گیرد.
+    مثال: a:active { color: red; }
+ 
+*/
+/* 
+  Die .container-Klasse wird verwendet, um den Inhalt (Inhalt=محتوا) auf der Seite zu zentrieren (zentrieren=مرکزچین) und die maximale Breite (maximale Breite=حداکثر عرض) zu begrenzen.
+  Ein Container (Container=ظرف) sorgt dafür, dass der Inhalt nicht zu breit (zu breit=خیلی عریض) wird und auf großen Bildschirmen (Bildschirmen=صفحه‌نمایش‌ها) besser lesbar (lesbar=قابل خواندن) bleibt.
+  Außerdem wird durch den Innenabstand (Innenabstand=فاصله داخلی) der Inhalt nicht direkt am Rand (Rand=لبه) angezeigt.
+  ---
+  کلاس .container برای مرکزچین کردن محتوا و محدود کردن حداکثر عرض استفاده می‌شود.
+  کانتینر باعث می‌شود محتوا خیلی عریض نشود و در صفحه‌نمایش‌های بزرگ خواناتر باشد.
+  همچنین با فاصله داخلی، محتوا به لبه صفحه نمی‌چسبد.
+*/
+.container {
+  max-width: 1200px; /* Maximale Breite (maximale Breite=حداکثر عرض) für Inhalt */
+  margin: 0 auto; /* Zentriert den Inhalt (zentriert=مرکزچین, Inhalt=محتوا) */
+  padding: 20px; /* Innenabstand (Innenabstand=فاصله داخلی) für Inhalt */
+}
+/* ==== 3. Header & Footer ==== */ /* هدر و فوتر */
+/* immer oben und unten, volle Breite */ /* همیشه بالا و پایین، عرض کامل */
+header,
+footer {
+  position: fixed; /* Fixierte Position */ /* موقعیت ثابت */
+  width: 100%; /* Volle Breite */ /* عرض کامل */
+  background-color: rgba(128, 128, 128, 0.7); /* Halbtransparenter Hintergrund */ /* پس‌زمینه نیمه شفاف */
+  color: #000; /* Textfarbe schwarz */ /* رنگ متن مشکی */
+  padding: 10px 0; /* Vertikaler Abstand */ /* فاصله عمودی */
+  text-align: center; /* Zentrierter Text */ /* متن وسط‌چین */
+  z-index: 1000; /* Immer im Vordergrund */ /* همیشه در جلو */
+}
+header { top: 0; } /* Header oben fixieren */ /* هدر در بالا ثابت */
+footer { bottom: 0; } /* Footer unten fixieren */ /* فوتر در پایین ثابت */
+
+/* ==== 4. Navigation ==== */ /* ناوبری */
+/* horizontale Linkleiste mit aktiven und Hover-Zuständen */ /* نوار افقی لینک با حالت فعال و هاور */
+nav ul {
+  display: flex; /* Flexbox für Liste */ /* استفاده از فلکس برای لیست */
+  justify-content: center; /* Zentrierung */ /* تراز وسط */
+  list-style: none; /* Keine Aufzählungszeichen */ /* بدون نشانه‌گذاری لیست */
+}
+nav ul li {
+  margin: 0 15px; /* Abstand zwischen Links */ /* فاصله بین لینک‌ها */
+}
+nav ul li a {
+  color: #000; /* Linkfarbe schwarz */ /* رنگ لینک مشکی */
+  text-decoration: none; /* Keine Unterstreichung */ /* بدون زیرخط */
+  font-weight: bold; /* Fettgedruckt */ /* ضخیم */
+  padding: 5px 10px; /* Innenabstand */ /* فاصله داخلی */
+  border-radius: 4px; /* Abgerundete Ecken */ /* گوشه‌های گرد */
+}
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: rgba(245, 160, 63, 0.8); /* Hintergrund bei Aktiv/Hover */ /* پس‌زمینه هنگام فعال یا هاور */
+  color: #fff; /* Text weiß */ /* متن سفید */
+}
+
+/* ==== 5. Canvas-Container ==== */ /* کانتینر اصلی (بوم) */
+/* halbtransparenter Hauptcontainer */ /* کانتینر اصلی نیمه شفاف */
+.canvas-container {
+  position: relative; /* Position relativ */ /* موقعیت نسبی */
+  z-index: 1; /* Im Vordergrund, aber unter Header/Footer */ /* جلوتر، اما زیر هدر/فوتر */
+  width: 90vw; /* 90% der Ansichtsbreite */ /* ۹۰٪ عرض صفحه */
+  max-width: 1000px; /* Maximale Breite */ /* حداکثر عرض */
+  margin: 80px auto 40px; /* Abstand oben/unten, zentriert */ /* فاصله بالا/پایین، وسط‌چین */
+  background-color: rgba(128, 128, 128, 0.7); /* Halbtransparenter Hintergrund */ /* پس‌زمینه نیمه شفاف */
+  color: #000; /* Textfarbe schwarz */ /* رنگ متن مشکی */
+  border: 2px solid rgba(12, 12, 12, 0.9); /* Dunkler Rahmen */ /* حاشیه تیره */
+  border-radius: 10px; /* Abgerundete Ecken */ /* گوشه‌های گرد */
+  padding: 20px; /* Innenabstand */ /* فاصله داخلی */
+}
+
+/* allgemeine orangefarbene Boxen */ /* جعبه‌های نارنجی عمومی */
+.box {
+  background-color: rgba(245, 160, 63, 0.8); /* Orange Hintergrund */ /* پس‌زمینه نارنجی */
+  color: #000; /* Textfarbe schwarz */ /* رنگ متن مشکی */
+  padding: 20px; /* Innenabstand */ /* فاصله داخلی */
+  margin: 10px 0; /* Abstand oben/unten */ /* فاصله بالا/پایین */
+  border-radius: 8px; /* Abgerundete Ecken */ /* گوشه‌های گرد */
+  text-align: center; /* Zentrierter Text */ /* متن وسط‌چین */
+}
+
+/* ==== 6. Formular-Layout ==== */ /* چیدمان فرم */
+/* zentrierter Container für Login und Registrierung */ /* کانتینر وسط‌چین برای ورود و ثبت‌نام */
+.form-container,
+.registration-container {
+  display: flex; /* Flexbox aktivieren */ /* فعال‌سازی فلکس‌باکس */
+  flex-direction: column; /* Spaltenrichtung */ /* جهت ستونی */
+  gap: 16px; /* Abstand zwischen Elementen */ /* فاصله بین عناصر */
+  width: 100%; /* Volle Breite */ /* عرض کامل */
+  max-width: 400px; /* Maximale Breite */ /* حداکثر عرض */
+  margin: 40px auto; /* Abstand oben/unten, zentriert */ /* فاصله بالا/پایین، وسط‌چین */
+  background-color: #000; /* Schwarzer Hintergrund */ /* پس‌زمینه مشکی */
+  color: #fff; /* Textfarbe weiß */ /* رنگ متن سفید */
+  padding: 20px; /* Innenabstand */ /* فاصله داخلی */
+  border-radius: 8px; /* Abgerundete Ecken */ /* گوشه‌های گرد */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Schatteneffekt */ /* افکت سایه */
+  direction: ltr; /* Schreibrichtung links nach rechts */ /* جهت نوشتار چپ به راست */
+  text-align: left; /* Text linksbündig */ /* متن چپ‌چین */
+}
+
+/* Formular-Gruppen: Label + Input untereinander */ /* گروه‌های فرم: لیبل و ورودی زیر هم */
+.form-group {
+  display: flex; /* Flexbox aktivieren */ /* فعال‌سازی فلکس‌باکس */
+  flex-direction: column; /* Spaltenrichtung */ /* جهت ستونی */
+  gap: 8px; /* Abstand zwischen Label und Input */ /* فاصله بین لیبل و ورودی */
+}
+.form-group label {
+  font-weight: bold; /* Fettgedrucktes Label */ /* لیبل ضخیم */
+}
+.form-group input {
+  width: 100%; /* Volle Breite */ /* عرض کامل */
+  padding: 0.5em; /* Innenabstand */ /* فاصله داخلی */
+  font-size: 1rem; /* Schriftgröße */ /* اندازه فونت */
+  border: 1px solid #ccc; /* Grauer Rahmen */ /* حاشیه خاکستری */
+  border-radius: 4px; /* Abgerundete Ecken */ /* گوشه‌های گرد */
+  height: 2.5em; /* Höhe des Eingabefelds */ /* ارتفاع فیلد ورودی */
+}
+
+/* ==== 7. Buttons ==== */ /* دکمه‌ها */
+/* Abstand im Formular */ /* فاصله در فرم */
+.form-container form,
+.registration-container form {
+  display: flex; /* Flexbox aktivieren */ /* فعال‌سازی فلکس‌باکس */
+  flex-direction: column; /* Spaltenrichtung */ /* جهت ستونی */
+  gap: 1rem; /* Abstand zwischen Elementen */ /* فاصله بین عناصر */
+}
+/* einheitliche Button-Grundstile */ /* استایل پایه دکمه‌ها */
+.form-container button,
+.registration-container button {
+  width: 100%; /* Volle Breite */ /* عرض کامل */
+  height: 2.5em; /* Höhe */ /* ارتفاع */
+  border: none; /* Kein Rahmen */ /* بدون حاشیه */
+  border-radius: 4px; /* Abgerundete Ecken */ /* گوشه‌های گرد */
+  font-weight: bold; /* Fettgedruckt */ /* ضخیم */
+  cursor: pointer; /* Zeiger als Cursor */ /* نشانگر موس */
+}
+/* Primär-Button: Einloggen / Registrieren */ /* دکمه اصلی: ورود/ثبت‌نام */
+button.primary {
+  background-color: rgba(245, 160, 63, 0.8); /* Orange Hintergrund */ /* پس‌زمینه نارنجی */
+  color: #000; /* Textfarbe schwarz */ /* رنگ متن مشکی */
+}
+button.primary:hover {
+  background-color: rgba(245, 140, 43, 0.8); /* Dunkleres Orange bei Hover */ /* نارنجی تیره‌تر هنگام هاور */
+}
+/* Sekundär-Button: Zurück */ /* دکمه ثانویه: بازگشت */
+button.secondary {
+  background-color: rgba(245, 160, 63, 0.8); /* Orange Hintergrund */ /* پس‌زمینه نارنجی */
+  color: #000; /* Textfarbe schwarz */ /* رنگ متن مشکی */
+}
+button.secondary:hover {
+  background-color: rgba(245, 140, 43, 0.8); /* Dunkleres Orange bei Hover */ /* نارنجی تیره‌تر هنگام هاور */
+}
+
+/* zusätzliche Abstände */ /* فاصله‌های اضافی */
+.login-actions {
+  display: flex; /* Flexbox aktivieren */ /* فعال‌سازی فلکس‌باکس */
+  flex-direction: column; /* Spaltenrichtung */ /* جهت ستونی */
+  gap: 12px; /* Abstand zwischen Aktionen */ /* فاصله بین اکشن‌ها */
+}
+
+/* ==== 8. Line-Up-Grid ==== */ /* گرید لیست گروه‌ها */
+.grid-lineup {
+  display: grid; /* Grid aktivieren */ /* فعال‌سازی گرید */
+  grid-template-columns: 1fr; /* Eine Spalte */ /* یک ستون */
+  gap: 20px; /* Abstand zwischen Elementen */ /* فاصله بین عناصر */
+  margin-top: 20px; /* Abstand nach oben */ /* فاصله از بالا */
+}
+.band {
+  background-color: rgba(245, 160, 63, 0.8); /* Orange Hintergrund */ /* پس‌زمینه نارنجی */
+  color: #000; /* Textfarbe schwarz */ /* رنگ متن مشکی */
+  padding: 20px; /* Innenabstand */ /* فاصله داخلی */
+  border-radius: 8px; /* Abgerundete Ecken */ /* گوشه‌های گرد */
+  text-align: center; /* Zentrierter Text */ /* متن وسط‌چین */
+}
+.band img {
+  max-width: 100%; /* Bild passt in Container */ /* تصویر در کانتینر جا می‌گیرد */
+  border-radius: 4px; /* Abgerundete Ecken */ /* گوشه‌های گرد */
+  margin-bottom: 10px; /* Abstand nach unten */ /* فاصله از پایین */
+}
+.band h2 {
+  margin: 10px 0; /* Abstand oben/unten */ /* فاصله بالا/پایین */
+}
+.band time {
+  display: block; /* Block-Element */ /* نمایش بلوک */
+  margin-top: 8px; /* Abstand nach oben */ /* فاصله از بالا */
+  font-style: italic; /* Kursiv */ /* ایتالیک */
+  color: #d71212; /* Rote Farbe */ /* رنگ قرمز */
+}
+.headliner-box {
+  background-color: rgba(245, 160, 63, 0.9); /* Kräftigeres Orange */ /* نارنجی پررنگ‌تر */
+  color: #000; /* Textfarbe schwarz */ /* رنگ متن مشکی */
+  padding: 30px; /* Mehr Innenabstand */ /* فاصله داخلی بیشتر */
+  border-radius: 8px; /* Abgerundete Ecken */ /* گوشه‌های گرد */
+}
+
+/* ==== 9. Responsive Breakpoints ==== */ /* نقاط شکست واکنش‌گرا */
+@media (min-width: 360px) {
+  .canvas-container { width: 80vw; } /* Breitere Canvas ab 360px */ /* کانتینر عریض‌تر از ۳۶۰ پیکسل */
+  .grid-lineup { grid-template-columns: repeat(2, 1fr); } /* Zwei Spalten ab 360px */ /* دو ستون از ۳۶۰ پیکسل */
+}
+@media (min-width: 600px) {
+  .canvas-container { width: 60vw; } /* Noch breiter ab 600px */ /* کانتینر عریض‌تر از ۶۰۰ پیکسل */
+  .grid-lineup { grid-template-columns: repeat(3, 1fr); } /* Drei Spalten ab 600px */ /* سه ستون از ۶۰۰ پیکسل */
+}
+@media (min-width: 900px) {
+  .canvas-container { width: 50vw; } /* Maximalbreite ab 900px */ /* حداکثر عرض از ۹۰۰ پیکسل */
+}
