@@ -1,0 +1,48 @@
+/* 
+    Styles for responsive images.
+    The .responsive-img class is intended to make images scale appropriately 
+    to fit their container while maintaining aspect ratio. 
+    Apply this class to <img> elements to ensure they are responsive 
+    across different screen sizes and devices.
+*/
+img.responsive-img {
+  width: 100%; /* [translate:عرض تصویر همیشه برابر با عرض عنصر والد خواهد بود] */
+  height: auto; /* [translate:نسبت ابعاد تصویر حفظ می‌شود] */
+  max-width: 100vw; /* [translate:تصویر هیچ‌گاه از عرض پنجره مرورگر بزرگ‌تر نمی‌شود] */
+  display: block; /* [translate:فضای اضافی پایین عکس حذف می‌شود] */
+}
+
+@media (max-width: 600px) {
+  img.responsive-img {
+    max-width: 100%; /* [translate:در صفحات کوچک، حداکثر عرض تصویر برابر با عنصر والد می‌شود] */
+  }
+}
+
+ body {
+  font-family: Arial, sans-serif; /* [translate:تنظیم فونت پیش‌فرض برای کل صفحه] */
+  margin: 0; /* [translate:حذف حاشیه پیش‌فرض مرورگر] */
+  padding: 0; /* [translate:حذف فاصله داخلی پیش‌فرض مرورگر] */
+  box-sizing: border-box; /* [translate:شامل کردن حاشیه و پدینگ در محاسبه عرض و ارتفاع عناصر] */
+  background: url("img/spotify-livestreaming-virtual-concerts-feat.jpeg");
+  background-position: center; /* [translate:تنظیم موقعیت پس‌زمینه در مرکز] */
+  background-repeat: no-repeat; /* [translate:عدم تکرار تصویر پس‌زمینه] */
+  background-size: cover; /* [translate:پوشش کامل پس‌زمینه] */
+}
+  h1, h2, h3 {
+    color: #333; /* [translate:تنظیم رنگ تیره برای عناوین] */
+    margin-bottom: 10px; /* [translate:افزودن فاصله پایین به عناوین] */
+  }
+  
+  p {
+    color: #555; /* [translate:تنظیم رنگ خاکستری برای پاراگراف‌ها] */
+    line-height: 1.6; /* [translate:افزایش ارتفاع خط برای خوانایی بهتر] */
+    margin-bottom: 15px; /* [translate:افزودن فاصله پایین به پاراگراف‌ها] */
+  }
+  nav {
+    background-color: #f4f4f4; /* [translate:تنظیم رنگ پس‌زمینه برای ناوبری] */
+    padding: 10px 20px; /* [translate:افزودن فاصله داخلی به ناوبری] */
+    margin-bottom: 20px; /* [translate:افزودن فاصله پایین به ناوبری] */
+    gap: 30px;
+    
+
+  }

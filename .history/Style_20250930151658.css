@@ -1,0 +1,105 @@
+/* 
+  Schreibe für alle Zeilen deutsche Kommentare und erkläre die Wörter auf Persisch innerhalb des deutschen Satzes. (برای همه خطوط کامنت آلمانی بنویس و معنی کلمات را به فارسی داخل جمله آلمانی به فارسی بنویس)
+*/
+
+/* 
+  Stile für responsive Bilder. (Stile=استایل‌ها, responsive=واکنش‌گرا, Bilder=تصاویر)
+  Die .responsive-img Klasse sorgt dafür, dass Bilder sich an den Container anpassen und das Seitenverhältnis (Seitenverhältnis=نسبت ابعاد) beibehalten. 
+  Wende diese Klasse auf <img>-Elemente an, damit sie auf verschiedenen Bildschirmgrößen und Geräten (Geräten=دستگاه‌ها) korrekt angezeigt werden.
+*/
+img.responsive-img {
+  width: 100%; /* Die Breite (Breite=عرض) des Bildes ist immer gleich wie die des Elternelements (Elternelements=عنصر والد). */
+  height: auto; /* Das Seitenverhältnis (Seitenverhältnis=نسبت ابعاد) des Bildes bleibt erhalten. */
+  max-width: 100vw; /* Das Bild wird nie breiter als das Browserfenster (Browserfenster=پنجره مرورگر). */
+  display: block; /* Entfernt zusätzlichen Platz (Platz=فضا) unter dem Bild. */
+}
+
+@media (max-width: 600px) {
+  img.responsive-img {
+  max-width: 100%; /* Auf kleinen Seiten (kleinen=کوچک), ist die maximale Breite (maximale Breite=حداکثر عرض) des Bildes gleich wie die des Elternelements. */
+  }
+}
+
+/* html und body nehmen die gesamte Breite (Breite=عرض) und Höhe (Höhe=ارتفاع) des Viewports (Viewports=صفحه نمایش) ein. */
+html, body {
+  width: 100vw; /* Gesamte Breite (gesamte=کامل, Breite=عرض) */
+  height: 100vh; /* Gesamte Höhe (gesamte=کامل, Höhe=ارتفاع) */
+  margin: 0; /* Kein äußerer Abstand (äußerer Abstand=حاشیه بیرونی) */
+  padding: 0; /* Kein innerer Abstand (innerer Abstand=فاصله داخلی) */
+  overflow: hidden; /* Verhindert zusätzliches Scrollen (zusätzliches Scrollen=اسکرول اضافی) */
+}
+
+/* body verwendet eine serifenlose Schriftart (serifenlose Schriftart=فونت بدون سریف) und hat ein Hintergrundbild (Hintergrundbild=تصویر پس‌زمینه) */
+body {
+  font-family: Arial, sans-serif; /* Serifenlose Schriftart (serifenlose=بدون سریف, Schriftart=فونت) */
+  box-sizing: border-box; /* Box-Modell (Box-Modell=مدل جعبه‌ای) mit Rahmen (Rahmen=حاشیه) und Innenabstand (Innenabstand=فاصله داخلی) */
+  background: url("img/spotify-livestreaming-virtual-concerts-feat.jpeg") center center no-repeat; /* Hintergrundbild (Hintergrundbild=تصویر پس‌زمینه) zentriert (zentriert=وسط) und ohne Wiederholung (Wiederholung=تکرار) */
+  background-size: cover; /* Hintergrundbild (Hintergrundbild=تصویر پس‌زمینه) bedeckt die gesamte Fläche (gesamte Fläche=کل صفحه) */
+}
+
+/* .main-content wird absolut zentriert (absolut=مطلق, zentriert=مرکزچین) und hat maximale Breite (maximale Breite=حداکثر عرض) */
+.main-content {
+  position: absolute; /* Absolute Positionierung (absolute=مطلق, Positionierung=موقعیت) */
+  top: 50%; /* Von oben 50% (oben=بالا) */
+  left: 50%; /* Von links 50% (links=چپ) */
+  transform: translate(-50%, -50%); /* Zentriert das Element (zentriert=مرکزچین, Element=عنصر) */
+  width: 90vw; /* 90% der Viewport-Breite (Viewport-Breite=عرض صفحه) */
+  max-width: 1200px; /* Maximale Breite 1200px (maximale Breite=حداکثر عرض) */
+  color: #222; /* Textfarbe dunkelgrau (Textfarbe=رنگ متن, dunkelgrau=خاکستری تیره) */
+  text-align: center; /* Text zentriert (zentriert=وسط) */
+}
+
+h1, h2, h3 {
+  color: #333; /* Dunkle Farbe (dunkle Farbe=رنگ تیره) für Überschriften (Überschriften=عناوین) */
+  margin-bottom: 10px; /* Abstand unten (Abstand unten=فاصله پایین) für Überschriften */
+}
+
+p {
+  color: #555; /* Graue Farbe (graue Farbe=رنگ خاکستری) für Absätze (Absätze=پاراگراف‌ها) */
+  line-height: 1.6; /* Erhöhte Zeilenhöhe (Zeilenhöhe=ارتفاع خط) für bessere Lesbarkeit (Lesbarkeit=خوانایی) */
+  margin-bottom: 15px; /* Abstand unten (Abstand unten=فاصله پایین) für Absätze */
+}
+
+/* 
+  Stile für die Navigationsleiste (Navigationsleiste=نوار ناوبری) und den Container (Container=ظرف).
+  Die nav-Stile erzeugen eine horizontale Navigationsleiste mit Abstand (Abstand=فاصله) und Hover-Effekten (Hover-Effekten=افکت هاور).
+  Die .container-Klasse zentriert den Inhalt (Inhalt=محتوا) und begrenzt die maximale Breite (maximale Breite=حداکثر عرض) für bessere Lesbarkeit.
+*/
+nav {
+  justify-content: center; /* Zentriert die Navigations-Items (zentriert=مرکزچین, Navigations-Items=آیتم‌های ناوبری) */
+  position: fixed; /* Fixiert die Navigationsleiste oben (fixiert=ثابت, oben=بالا) */
+  top: 0; /* Richtet die Leiste am oberen Rand (oberen Rand=لبه بالا) aus. */
+  /* Entfernt: bottom: 0;  (Redundant für oben fixierte horizontale Navigationsleiste) */
+  /* در CSS تگ nav این خط هست: bottom: 0; — این برای horizontal navbar اضافی است و اگر هدف navbar بالای صفحه باشد حذفش کن. */
+  width: 100%; /* Die Leiste nimmt die gesamte Breite (gesamte Breite=تمام عرض) ein. */
+  z-index: 1000; /* Stellt sicher, dass die Leiste über anderen Elementen (anderen Elementen=سایر عناصر) bleibt. */
+  background: #f6f5f0; /* Heller Hintergrund (heller Hintergrund=رنگ پس‌زمینه روشن) für die Navigationsleiste */
+  padding: 10px 20px; /* Innenabstand (Innenabstand=فاصله داخلی) für die Navigationsleiste */
+  display: flex; /* Zeigt die Items horizontal (horizontal=افقی) an */
+  gap: 30px; /* Abstand (Abstand=فاصله) zwischen den Navigations-Items */
+  font-family: sans-serif; /* Einfache Schriftart (einfache Schriftart=فونت ساده) für Navigation */
+  font-size: 1.1em; /* Größere Schriftgröße (Schriftgröße=اندازه فونت) für Navigation */
+}
+nav a {
+  text-decoration: none; /* Entfernt Unterstreichung (Unterstreichung=خط زیر) von Links */
+  color: #727272; /* Graue Farbe (graue Farbe=رنگ خاکستری) für Links */
+  transition: color 0.2s; /* Farbeffekt (Farbeffekt=افکت تغییر رنگ) beim Hover */
+}
+nav a:hover {
+  color: #444; /* Dunklere Farbe (dunklere Farbe=رنگ تیره‌تر) für Link beim Hover */
+  border-bottom: 1px solid #444; /* Unterstrich (Unterstrich=خط زیر) beim Hover */
+}
+/* 
+  Die .container-Klasse wird verwendet, um den Inhalt (Inhalt=محتوا) auf der Seite zu zentrieren (zentrieren=مرکزچین) und die maximale Breite (maximale Breite=حداکثر عرض) zu begrenzen.
+  Ein Container (Container=ظرف) sorgt dafür, dass der Inhalt nicht zu breit (zu breit=خیلی عریض) wird und auf großen Bildschirmen (Bildschirmen=صفحه‌نمایش‌ها) besser lesbar (lesbar=قابل خواندن) bleibt.
+  Außerdem wird durch den Innenabstand (Innenabstand=فاصله داخلی) der Inhalt nicht direkt am Rand (Rand=لبه) angezeigt.
+  ---
+  کلاس .container برای مرکزچین کردن محتوا و محدود کردن حداکثر عرض استفاده می‌شود.
+  کانتینر باعث می‌شود محتوا خیلی عریض نشود و در صفحه‌نمایش‌های بزرگ خواناتر باشد.
+  همچنین با فاصله داخلی، محتوا به لبه صفحه نمی‌چسبد.
+*/
+.container {
+  max-width: 1200px; /* Maximale Breite (maximale Breite=حداکثر عرض) für Inhalt */
+  margin: 0 auto; /* Zentriert den Inhalt (zentriert=مرکزچین, Inhalt=محتوا) */
+  padding: 20px; /* Innenabstand (Innenabstand=فاصله داخلی) für Inhalt */
+}
