@@ -1,82 +1,56 @@
-<!-- Definiert den Dokumenttyp als HTML5 -->
 <!DOCTYPE html>
-<!-- Beginn des HTML-Dokuments, Sprache Deutsch, Leserichtung von links nach rechts -->
 <html lang="de" dir="ltr">
 <head>
-  <!-- Zeichencodierung auf UTF-8 setzen, unterstützt Umlaute und Sonderzeichen -->
   <meta charset="UTF-8">
-  <!-- Responsives Design: Passt die Seite an die Bildschirmgröße an -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Titel, der im Browser-Tab angezeigt wird -->
   <title>Login für Helfer:innen</title>
-  <!-- Einbinden einer externen CSS-Datei für das Styling -->
   <link rel="stylesheet" href="mystyle.css">
 </head>
-<!-- Der Body-Tag enthält den sichtbaren Inhalt der Seite, Klasse für spezifisches Styling -->
 <body class="helfer-page">
 
-  <!-- Kopfbereich der Seite mit Navigationsleiste -->
   <header>
     <nav>
       <ul>
-        <!-- Navigationslink zur Startseite -->
         <li><a href="index.html">Start</a></li>
-        <!-- Navigationslink zur Registrierungsseite (kein Text, daher unsichtbar) -->
         <li><a href="Registrierung.html"></a></li>
-        <!-- Navigationslink zur Helfer:innen-Seite, aktuell aktiv markiert -->
         <li><a href="helfer.html" class="active">Helfer:innen</a></li>
-        <!-- Navigationslink zum Impressum -->
         <li><a href="impressum.html">Impressum</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hauptinhalt der Seite, Container für das Layout -->
   <main class="canvas-container">
-    <!-- Box für das Logo oder Bild -->
     <div class="box">
-       <!-- Anzeige eines Bildes (LEGO-Logo), kein Alternativtext angegeben -->
        <img src="img/LEGO.png" alt="" />
     </div>
-      <!-- Überschrift für den Login-Bereich -->
       <h1>Login für Helfer:innen</h1>
-      <!-- Kurze Beschreibung für den Login-Vorgang -->
       <p>Bitte melde dich an, um auf deine Helfer:innen-Informationen zuzugreifen.</p>
     </div>
 
-    <!-- Container für das Login-Formular -->
     <div class="form-container">
-      <!-- Formular für den Login, POST-Methode, sendet Daten an externe API -->
       <form id="loginForm" method="post" action="https://dummyjson.com/auth/login">
         <div class="form-group">
-          <!-- Beschriftung für das Benutzername-Feld -->
           <label for="username">Benutzername:</label>
-          <!-- Eingabefeld für den Benutzernamen, Pflichtfeld -->
           <input type="text" id="username" name="username" required>
         </div>
         <div class="form-group">
-          <!-- Beschriftung für das Passwort-Feld -->
           <label for="password">Passwort:</label>
-          <!-- Eingabefeld für das Passwort, Pflichtfeld, Eingabe wird verschleiert -->
           <input type="password" id="password" name="password" required>
         </div>
-        <!-- Absende-Button für das Formular -->
         <button type="submit" class="primary">Einloggen</button>
       </form>
-      <!-- Zusätzliche Aktionen unter dem Formular -->
       <div class="login-actions">
-        <!-- Button zur Weiterleitung auf die Registrierungsseite -->
         <button type="button" class="secondary"  onclick="location.href='Registrierung.html'">   Registrieren         </button>            
-         <!-- Button zur Rückkehr auf die Helfer:innen-Seite -->
          <button type="button" class="secondary" onclick="location.href='helfer.html'">  Zurück </button>
+                
       </div>
     </div>
   </main>
 
-  <!-- Fußbereich der Seite mit Copyright und Links -->
   <footer>
     <p>&copy; 2025 Rock am See Festival | <a href="impressum.html">Impressum</a> | <a href="index.html"> login </a></p>
   </footer>
 
 </body>
 </html>
+ 
