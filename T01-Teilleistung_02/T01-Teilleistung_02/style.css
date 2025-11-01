@@ -1,0 +1,161 @@
+/* 0) Box-Sizing global setzen, damit Padding und Border in der Breite enthalten sind */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Klasse, um Elemente auszublenden */
+.hidden {
+  display: none;
+}
+
+/* 1) Grundstile für den gesamten Body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* 2) Fixierte Navigationsleiste oben im Viewport */
+.navbar {
+  position: fixed;                /* Immer oben kleben */
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 1rem auto;              /* Oben/Unten 1rem, zentriert */
+  max-width: 90%;                 /* Maximal 90% der Viewport-Breite */
+  padding: 0.5rem 1rem;           /* Innenabstand */
+  background-color: rgba(210, 221, 231, 0.9);
+  border: 2px solid #333;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;                  /* Flexbox für Logo + Links */
+  align-items: center;            /* Vertikale Zentrierung */
+  justify-content: center;        /* Zunächst zentriert */
+  gap: 2rem;                      /* Abstand zwischen Logo und Links */
+  z-index: 1000;                  /* Über allen Inhalten */
+}
+
+/* 3) Logo innerhalb der Navigationsleiste */
+.logo-container {
+  margin-right: 1rem;             /* Abstand rechts vom Logo */
+}
+.logo {
+  max-height: 50px;               /* Logo-Höhe begrenzen */
+  width: auto;                    /* Proportional skalieren */
+}
+
+/* 4) Platzhalter unter der Navigation */
+.spacer {
+  height: 4rem;                   /* Genau so hoch wie die Nav-Leiste */
+}
+
+/* 5) Nav-Links als horizontale Liste */
+.nav-list {
+  list-style: none;               /* Aufzählungszeichen entfernen */
+  margin: 0;
+  padding: 0;
+  display: flex;                  /* Links nebeneinander */
+  gap: 1.5rem;                    /* Abstand zw. den Links */
+}
+.nav-list li a {
+  display: block;                 /* Volle Klickfläche */
+  padding: 0.75rem 1rem;          /* Innenabstand */
+  text-decoration: none;          /* Keine Unterstreichung */
+  font-weight: bold;              /* Fettdruck */
+  text-align: center;             /* Text zentriert */
+  background-color: rgba(172, 172, 216, 0.2);
+  color: #333;
+  border-radius: 4px;             /* Abgerundete Ecken */
+  transition: background-color 0.2s;
+}
+.nav-list li a:hover {
+  background-color: rgba(172, 172, 216, 0.4);
+}
+
+/* 6) Container für den Haupt-Content */
+.container {
+  margin: 1rem auto;              /* Oben/Unten 1rem, zentriert */
+  max-width: 90%;                 /* Maximal 90% der Viewport-Breite */
+  padding: 5rem;                  /* Innenabstand (Platz für Nav) */
+  background-color: rgba(172, 172, 216, 0.2);
+  border-radius: 8px;
+}
+
+/* 7) Full-Width-Sektionen direkt unter der Navigation */
+.full-section {
+  margin: 1rem auto;
+  max-width: 90%;
+  width: 100%;
+  padding: 2rem 1rem;
+  background-color: #fff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.full-section h2 {
+  margin-top: 0;
+}
+
+/* 8) Farbverläufe je Sektion anhand der ID */
+#countdown       { background: linear-gradient(to right, #ffecb3, #ffc107); }
+#informationen    { background: linear-gradient(to right, #c8e6c9, #66bb6a); }
+#veranstaltungen  { background: linear-gradient(to right, #d1c4e9, #7e57c2); }
+#helfer           { background: linear-gradient(to right, #f39a35, #f58748); }
+
+/* 9) Tabelle für Veranstaltungen */
+.events-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.events-table th,
+.events-table td {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+}
+.events-table th {
+  background-color: #eee;
+}
+
+/* 10) Card für Helfer:innen */
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  text-align: left;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* 11) Loader-Circle (CSS-Only-Animation) */
+.loader-circle {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0,0,0,0.1);
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 1rem auto;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 12) Responsive Anpassungen */
+@media (max-width: 768px) {
+  .nav-list {
+    gap: 0.5rem;                 /* Weniger Abstand auf kleineren Bildschirmen */
+  }
+  .nav-list li a {
+    padding: 0.5rem 0.75rem;
+  }
+  .logo {
+    max-height: 40px;            /* Kleineres Logo auf Mobilgeräten */
+  }
+}

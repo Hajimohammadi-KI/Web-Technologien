@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login für Helfer:innen</title>
+  <link rel="stylesheet" href="mystyle.css">
+</head>
+<body class="helfer-page">
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="Registrierung.html"></a></li>
+        <li><a href="helfer.html" class="active">Helfer:innen</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="canvas-container">
+    <div class="box">
+       <img src="img/LEGO.png" alt="" />
+    </div>
+      <h1>Login für Helfer:innen</h1>
+      <p>Bitte melde dich an, um auf deine Helfer:innen-Informationen zuzugreifen.</p>
+    </div>
+
+    <div class="form-container">
+      <form id="loginForm" method="post" action="https://dummyjson.com/auth/login">
+        <div class="form-group">
+          <label for="username">Benutzername:</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Passwort:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="primary">Einloggen</button>
+      </form>
+      <div class="login-actions">
+        <button type="button" class="secondary"  onclick="location.href='Registrierung.html'">   Registrieren         </button>            
+         <button type="button" class="secondary" onclick="location.href='helfer.html'">  Zurück </button>
+                
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Rock am See Festival | <a href="impressum.html">Impressum</a> | <a href="index.html"> login </a></p>
+  </footer>
+
+</body>
+</html>
+ 

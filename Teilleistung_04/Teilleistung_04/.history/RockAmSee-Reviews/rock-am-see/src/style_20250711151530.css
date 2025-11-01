@@ -1,0 +1,18 @@
+header {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+  text-align: center;
+}
+
+header img {
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+main {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+}

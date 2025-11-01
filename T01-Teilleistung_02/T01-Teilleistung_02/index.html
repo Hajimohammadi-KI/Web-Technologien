@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Festival-Organisation</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- 1) Fixierte Navigationsleiste -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <img src="imag/LEGO.png" alt="Festival-Logo" class="logo" />
+    </div>
+    <ul class="nav-list">
+      <li><a href="#countdown"       id="link-countdown">Startseite</a></li>
+      <li><a href="#informationen"   id="link-informationen">Festival-Organisation</a></li>
+      <li><a href="#veranstaltungen" id="link-veranstaltungen">Festival-Planung</a></li>
+      <li><a href="#helfer"          id="link-helfer">Festival-Durchführung</a></li>
+    </ul>
+  </nav>
+
+  <!-- 2) Spacer, damit der Hauptinhalt nicht von der fixen Nav verdeckt wird -->
+  <div class="spacer"></div>
+
+  <main class="container">
+
+    <!-- Sektion 1: Countdown -->
+    <section id="countdown" class="full-section">
+      <h2 class="section-header">Countdown</h2>
+      <div id="countdown-timer">Loading …</div>
+    </section>
+
+    <!-- Sektion 2: Informationen -->
+    <section id="informationen" class="full-section">
+      <h2 class="section-header" id="heading-informationen">Informationen</h2>
+      <div id="informationen-details" class="hidden">
+        <h3>Organisation & Ablauf</h3>
+        <p>Das Festival „Rock am See“ findet jährlich vom 5. bis 7. Juli 2025 am Ufer des Sees statt. Verantwortlich sind die „Rock am See GmbH“ in Kooperation mit lokalen Gemeinden.</p>
+        <p><strong>Verfügbare Daten pro Helfer:in:</strong></p>
+        <ul>
+          <li>Name (Vorname, Nachname)</li>
+          <li>Geschlecht</li>
+          <li>Email-Adresse</li>
+          <li>Geburtsdatum</li>
+          <li>Registrierungsdatum</li>
+          <li>Telefonnummer</li>
+          <li>Handynummer</li>
+          <li>ID (UUID o. Ä.)</li>
+          <li>Profilbild (large image)</li>
+        </ul>
+        <p><strong>Weitere organisatorische Details:</strong></p>
+        <ul>
+          <li>Gesamtablauf (Aufbau, Ablaufpläne, Pausenzeiten)</li>
+          <li>Sicherheitskonzept (genehmigte Kapazität, Notfallplan)</li>
+          <li>Logistik (Strom- und Wasseranschlüsse, Bühnenaufbau)</li>
+          <li>Promotion &amp; Marketing (Social Media, Plakate, lokale Presse)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Sektion 3: Veranstaltungen -->
+    <section id="veranstaltungen" class="full-section">
+      <h2 id="heading-veranstaltungen" class="section-header">Veranstaltungen</h2>
+      <div id="veranstaltungen-details" class="hidden">
+        <div id="events-container"></div>
+      </div>
+    </section>
+
+    <!-- Sektion 4: Helfer:innen -->
+    <section id="helfer" class="full-section">
+      <h2 id="heading-helfer" class="section-header">Helfer:innen</h2>
+      <div id="helfer-details" class="hidden">
+        <div id="loader" class="loader-circle hidden"></div>
+        <div id="error" class="hidden">Fehler beim Laden der Daten!</div>
+
+        <label for="sort-select">Sortieren nach:</label>
+        <select id="sort-select">
+          <option value="">– Auswahl –</option>
+          <option value="name-asc">Name (aufsteigend)</option>
+          <option value="name-desc">Name (absteigend)</option>
+          <option value="registered-asc">Registrierungsdatum (auf)</option>
+          <option value="registered-desc">Registrierungsdatum (ab)</option>
+        </select>
+
+        <ul id="helper-list"></ul>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
